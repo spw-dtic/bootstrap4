@@ -27,10 +27,10 @@
     <c:set var="displayAbsoluteArea">
         <div class="panel panel-danger">
             <div class="panel-heading">
-                <h3 class="panel-title"><span class="glyphicon glyphicon-lock"></span><fmt:message key="bootstrap4compoments.columns.absolute.area.title"/></h3>
+                <h3 class="panel-title"><span class="glyphicon glyphicon-lock"></span><fmt:message key="bootstrap4nt_grid.absolute.area.title"/></h3>
             </div>
             <div class="panel-body">
-                <fmt:message key="bootstrap4compoments.columns.absolute.area.desc">
+                <fmt:message key="bootstrap4nt_grid.absolute.area.desc">
                     <fmt:param value="${level}"/>
                 </fmt:message>
             </div>
@@ -52,8 +52,8 @@
         <div class="col-md-12">
             <div class="alert">
                 <button type="button" class="close" data-dismiss="alert">Ok</button>
-                <strong><fmt:message key="bootstrap4compoments.columns.warning"/></strong>
-                <span><fmt:message key="bootstrap4compoments.columns.couldNotDisplayGrid">
+                <strong><fmt:message key="bootstrap4nt_grid.warning"/></strong>
+                <span><fmt:message key="bootstrap4nt_grid.couldNotDisplayGrid">
                     <fmt:param value="${columns}"/>
                 </fmt:message></span>
             </div>

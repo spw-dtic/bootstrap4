@@ -77,8 +77,8 @@
             <div class="col">
                 <div class="alert">
                     <button type="button" class="close" data-dismiss="alert">×</button>
-                    <strong><fmt:message key="bootstrap4compoments.columns.warning"/></strong>
-                    <fmt:message key="bootstrap4compoments.columns.couldNotDisplayGrid">
+                    <strong><fmt:message key="bootstrap4nt_grid.warning"/></strong>
+                    <fmt:message key="bootstrap4nt_grid.couldNotDisplayGrid">
                         <fmt:param value="${columns}"/>
                     </fmt:message>
                 </div>

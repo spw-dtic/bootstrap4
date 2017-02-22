@@ -20,9 +20,9 @@ import javax.jcr.Value;
 import java.util.*;
 
 
-public class ColumnInitializer extends AbstractChoiceListRenderer implements ModuleChoiceListInitializer, ModuleChoiceListRenderer {
+public class gridTypeInitializer extends AbstractChoiceListRenderer implements ModuleChoiceListInitializer, ModuleChoiceListRenderer {
 
-    private static final Logger logger = LoggerFactory.getLogger(ColumnInitializer.class);
+    private static final Logger logger = LoggerFactory.getLogger(gridTypeInitializer.class);
 
     private String key;
 
@@ -47,13 +47,13 @@ public class ColumnInitializer extends AbstractChoiceListRenderer implements Mod
 
         //predefined
         myPropertiesMap = new HashMap<String, Object>();
-        myPropertiesMap.put("addMixin","bootstrap4mix:predefinedColumns");
-        myChoiceList.add(new ChoiceListValue("predefinedColumns",myPropertiesMap,new ValueImpl("predefinedColumns", PropertyType.STRING, false)));
+        myPropertiesMap.put("addMixin","bootstrap4mix:predefinedGrid");
+        myChoiceList.add(new ChoiceListValue("predefinedGrid",myPropertiesMap,new ValueImpl("predefinedGrid", PropertyType.STRING, false)));
 
         //custom
         myPropertiesMap = new HashMap<String, Object>();
-        myPropertiesMap.put("addMixin","bootstrap4mix:customColumns");
-        myChoiceList.add(new ChoiceListValue("customColumns",myPropertiesMap,new ValueImpl("customColumns", PropertyType.STRING, false)));
+        myPropertiesMap.put("addMixin","bootstrap4mix:customGrid");
+        myChoiceList.add(new ChoiceListValue("customGrid",myPropertiesMap,new ValueImpl("customGrid", PropertyType.STRING, false)));
 
         //Return the list
         return myChoiceList;

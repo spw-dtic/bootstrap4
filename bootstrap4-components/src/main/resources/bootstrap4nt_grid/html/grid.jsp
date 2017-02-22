@@ -8,7 +8,7 @@
 <c:set var="createContainer" value="${jcr:isNodeType(currentNode,'bootstrap4mix:createContainer')}"/>
 <c:set var="createRow" value="${jcr:isNodeType(currentNode,'bootstrap4mix:createRow')}"/>
 
-<c:set var="columnsType" value="${currentNode.properties.columnsType.string}"/>
+<c:set var="gridType" value="${currentNode.properties.gridType.string}"/>
 
 <c:if test="${createSection}">
     <c:set var="sectionType" value="${currentNode.properties['sectionElement'].string}"/>
@@ -46,7 +46,7 @@
         value=' '/>${rowHorizontalAlignment}</c:if>">
 </c:if>
 
-<template:module node="${currentNode}" view="hidden.${columnsType}" editable="false"/>
+<template:module node="${currentNode}" view="hidden.${gridType}" editable="false"/>
 
 <c:if test="${createRow}">
     </div>
