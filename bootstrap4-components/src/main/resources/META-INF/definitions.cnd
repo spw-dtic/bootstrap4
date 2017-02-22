@@ -1,0 +1,45 @@
+<bootstrap4mix = 'http://www.jahia.org/bootstrap4/mix/1.0'>
+<bootstrap4nt = 'http://www.jahia.org/bootstrap4/nt/1.0'>
+<jnt = 'http://www.jahia.org/jahia/nt/1.0'>
+<jmix = 'http://www.jahia.org/jahia/mix/1.0'>
+
+[bootstrap4mix:predefinedColumns] > jmix:templateMixin mixin
+ extends = bootstrap4nt:columns
+ - grid (string, choicelist[resourceBundle,moduleImage='png']) = '4_8' autocreated < '2_10', '3_9', '4_8', '4_4_4', '3_6_3', '3_3_3_3', '6_6', '8_4', '9_3', '10_2', '12'
+
+[bootstrap4mix:customColumns] > jmix:templateMixin mixin
+ extends = bootstrap4nt:columns
+ - gridClasses (string) = 'col col-md-8,col-6 col-md-4'
+
+[bootstrap4mix:createSection] mixin
+ extends = bootstrap4nt:columns
+ itemtype = content
+ - sectionElement (string, choicelist[resourceBundle]) = 'div' autocreated < 'section', 'article', 'header', 'footer', 'aside', 'nav', 'div'
+ - sectionId (string) < '[a-zA-Z0-9-_]+'
+ - sectionCssClass (string)
+ - sectionRole (string)
+
+[bootstrap4mix:createRow] mixin
+ extends = bootstrap4nt:columns
+ itemtype = content
+ - rowId (string) < '[a-zA-Z0-9-_]+'
+ - rowCssClass (string)
+ - rowVerticalAlignment (string, choicelist[resourceBundle]) = 'default' autocreated < 'default', 'align-items-start', 'align-items-center', 'align-items-end'
+ - rowHorizontalAlignment (string, choicelist[resourceBundle]) = 'default' autocreated < 'default', 'justify-content-start', 'justify-content-center', 'justify-content-end','justify-content-around','justify-content-between'
+
+[bootstrap4mix:createContainer] mixin
+ extends = bootstrap4nt:columns
+ itemtype = content
+ - containerId (string) < '[a-zA-Z0-9-_]+'
+ - containerCssClass (string)
+ - gridLayout (string, choicelist[resourceBundle]) = 'fixed-width' autocreated < 'fixed-width', 'full-width'
+
+[bootstrap4mix:createAbsoluteAreas] mixin
+ extends = bootstrap4nt:columns
+ itemtype = content
+ - level (string, choicelist[resourceBundle]) = '0' autocreated < '0', '1', '2', '3', '4', '5'
+
+
+[bootstrap4nt:columns] > jnt:content, bootstrap4mix:component, jmix:list, jmix:siteContent
+ - columnsType (string, choicelist[columnInitializer,resourceBundle]) = 'predefinedColumns' autocreated < 'nogrid', 'predefinedColumns', 'customColumns'
+ + * (jmix:droppableContent) = jmix:droppableContent
