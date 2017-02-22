@@ -63,6 +63,7 @@
     <developerConnection>scm:dummy:uri</developerConnection>
   </scm>
   <properties>
+    <Jahia-Module-Priority>1</Jahia-Module-Priority>
     <jahia-depends>bootstrap4-core,default,jquery</jahia-depends>
   </properties>
   <repositories>
