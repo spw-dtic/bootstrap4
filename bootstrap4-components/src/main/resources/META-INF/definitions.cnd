@@ -40,6 +40,46 @@
  - level (string, choicelist[resourceBundle]) = '0' autocreated < '0', '1', '2', '3', '4', '5'
 
 
-[bootstrap4nt:grid] > jnt:content, bootstrap4mix:component, jmix:list, jmix:siteContent
+[bootstrap4nt:grid] > jnt:content, bootstrap4mix:component, jmix:list
  - gridType (string, choicelist[gridTypeInitializer,resourceBundle]) = 'predefinedGrid' autocreated < 'nogrid', 'predefinedGrid', 'customGrid'
+ + * (jmix:droppableContent) = jmix:droppableContent
+
+[bootstrap4mix:hasPadding] mixin
+[bootstrap4mix:padding] mixin
+ extends = bootstrap4mix:hasPadding
+ itemtype = content
+ - paddingWhere  (string, choicelist[resourceBundle]) = 'all' autocreated < 'all', 't', 'b', 'l', 'r', 'x', 'y'
+ - paddingSize (string, choicelist[resourceBundle]) = '3' autocreated < '0', '1', '2', '3', '4', '5'
+
+[bootstrap4mix:hasMargin] mixin
+[bootstrap4mix:margin] mixin
+ extends = bootstrap4mix:hasMargin
+ itemtype = content
+ - marginWhere  (string, choicelist[resourceBundle]) = 'all' autocreated < 'all', 't', 'b', 'l', 'r', 'x', 'y'
+ - marginSize (string, choicelist[resourceBundle]) = '3' autocreated < '0', '1', '2', '3', '4', '5'
+
+[bootstrap4mix:imageAdvancedSettings] mixin
+ extends = bootstrap4mix:image
+ itemtype = content
+ - imageClass (string)
+ - imageStyle (string)
+ - imageID (string)
+
+[bootstrap4mix:image] mixin
+ - image (weakreference, picker[type='image']) < 'jmix:image'
+
+[bootstrap4mix:mediaObjectImageAlignment] mixin
+ extends = bootstrap4nt:mediaObject
+ itemtype = content
+ - imageVerticalAlignment (string, choicelist[resourceBundle]) = 'align-self-start' autocreated < 'align-self-start', 'align-self-center', 'align-self-end'
+ - imageHorizonralAlignment (string, choicelist[resourceBundle]) = 'left' autocreated < 'left', 'right'
+
+[bootstrap4mix:mediaObjectAdvancedSettings] mixin
+ extends = bootstrap4nt:mediaObject
+ itemtype = content
+ - mediaObjectClass (string)
+ - mediaObjectStyle (string)
+ - mediaObjectID (string)
+
+[bootstrap4nt:mediaObject] > jnt:content, bootstrap4mix:component, jmix:list, bootstrap4mix:image, bootstrap4mix:hasMargin
  + * (jmix:droppableContent) = jmix:droppableContent
