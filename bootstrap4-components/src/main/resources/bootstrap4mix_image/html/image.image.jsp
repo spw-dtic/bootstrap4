@@ -24,6 +24,9 @@
     <c:if test="${! empty id}">
         <c:set var="id" value="${id}"/>
     </c:if>
+    <c:set var="alt" value="${imageNode.displayableName}"/>
+    <%-- set responsive by default --%>
+    <c:set var="responsive" value="true"/>
 
     <c:if test="${jcr:isNodeType(currentNode, 'bootstrap4mix:imageAdvancedSettings')}">
         <c:set var="imageClass" value="${currentNode.properties.imageClass.string}"/>
@@ -39,12 +42,48 @@
         <c:if test="${! empty imageID}">
             <c:set var="id" value="${imageID}"/>
         </c:if>
+        <c:set var="responsive" value="${currentNode.properties.responsive.boolean}"/>
+        <c:set var="thumbnails" value="${currentNode.properties.thumbnails.boolean}"/>
+        <c:if test="${thumbnails}">
+            <c:set var="class">${class}${' img-thumbnail'}</c:set>
+        </c:if>
+        <c:set var="borderRadius" value="${currentNode.properties.borderRadius.string}"/>
+        <c:if test="${borderRadius != 'rounded-0'}">
+            <c:set var="class">${class}${' '}${borderRadius}</c:set>
+        </c:if>
+        <c:set var="align" value="${currentNode.properties.align.string}"/>
+        <c:choose>
+            <c:when test="${align eq 'left'}">
+                <c:set var="class">${class}${' float-left'}</c:set>
+            </c:when>
+            <c:when test="${align eq 'right'}">
+                <c:set var="class">${class}${' float-right'}</c:set>
+            </c:when>
+            <c:when test="${align eq 'center'}">
+                <c:set var="class">${class}${' mx-auto d-block'}</c:set>
+            </c:when>
+        </c:choose>
+        <c:set var="altStr" value="${currentNode.properties.alt.string}"/>
+        <c:if test="${! empty altStr}">
+            <c:set var="alt" value="${altStr}"/>
+        </c:if>
     </c:if>
+    <c:choose>
+        <c:when test="${! responsive}">
+            <c:set var="class">${fn:replace(class, 'img-fluid', '')}</c:set>
+        </c:when>
+        <c:otherwise>
+            <c:if test="${! fn:contains(class, 'img-fluid')}">
+                <c:set var="class">${class}${' img-fluid'}</c:set>
+            </c:if>
+        </c:otherwise>
+    </c:choose>
 
     <c:url var="imageUrl" value="${imageNode.url}" context="/"/>
-    <img src="${imageUrl}" alt="${fn:escapeXml(imageNode.displayableName)}"
+    <img src="${imageUrl}" alt="${fn:escapeXml(alt)}"
          <c:if test="${! empty class}"><c:out value=" "/>class="${fn:escapeXml(class)}"</c:if>
          <c:if test="${! empty style}"><c:out value=" "/>style="${fn:escapeXml(style)}"</c:if>
+         <c:if test="${! empty id}"><c:out value=" "/>id="${fn:escapeXml(id)}"</c:if>
          <c:if test="${! empty id}"><c:out value=" "/>id="${fn:escapeXml(id)}"</c:if>
     />
 </c:if>

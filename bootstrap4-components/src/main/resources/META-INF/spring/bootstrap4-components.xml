@@ -2,7 +2,10 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
-    <bean id="gridTypeInitializer" class="org.jahia.modules.bootstrap4.initializers.gridTypeInitializer">
+    <bean id="gridTypeInitializer" class="org.jahia.modules.bootstrap4.initializers.GridTypeInitializer">
         <property name="key" value="gridTypeInitializer" />
+    </bean>
+    <bean id="linkTypeInitializer" class="org.jahia.modules.bootstrap4.initializers.LinkTypeInitializer">
+        <property name="key" value="linkTypeInitializer" />
     </bean>
 </beans>

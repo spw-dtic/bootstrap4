@@ -59,11 +59,19 @@
  - marginSize (string, choicelist[resourceBundle]) = '3' autocreated < '0', '1', '2', '3', '4', '5'
 
 [bootstrap4mix:imageAdvancedSettings] mixin
- extends = bootstrap4mix:image
+ extends = bootstrap4mix:imageAdvanced
  itemtype = content
- - imageClass (string)
- - imageStyle (string)
- - imageID (string)
+ - imageClass (string) indexed=no
+ - imageStyle (string) indexed=no
+ - imageID (string) indexed=no
+ - responsive (boolean) = 'true' indexed=no
+ - thumbnails (boolean) = 'false' indexed=no
+ - borderRadius (string, choicelist[resourceBundle]) = 'rounded-0' autocreated < 'rounded','rounded-top', 'rounded-right', 'rounded-bottom','rounded-left','rounded-circle','rounded-0'
+ - align (string, choicelist[resourceBundle]) = 'default' autocreated < 'default', 'left', 'right', 'center'
+ - alt (string) i18n
+
+
+[bootstrap4mix:imageAdvanced] > bootstrap4mix:image mixin
 
 [bootstrap4mix:image] mixin
  - image (weakreference, picker[type='image']) < 'jmix:image'
@@ -81,5 +89,48 @@
  - mediaObjectStyle (string)
  - mediaObjectID (string)
 
-[bootstrap4nt:mediaObject] > jnt:content, bootstrap4mix:component, jmix:list, bootstrap4mix:image, bootstrap4mix:hasMargin
+[bootstrap4nt:mediaObject] > jnt:content, bootstrap4mix:component, jmix:list, bootstrap4mix:imageAdvanced, bootstrap4mix:hasMargin
+ + * (jmix:droppableContent) = jmix:droppableContent
+
+[bootstrap4mix:figureAdvancedSettings] mixin
+ extends = bootstrap4nt:figure
+ itemtype = content
+ - captionAlignment (string, choicelist[resourceBundle]) = 'text-left' autocreated < 'text-left', 'text-center', 'text-right'
+
+[bootstrap4nt:figure] > jnt:content, bootstrap4mix:component, bootstrap4mix:imageAdvanced, mix:title
+
+[bootstrap4mix:text] mixin
+ - text (string, richtext[ckeditor.customConfig='$context/modules/bootstrap4-components/javascript/ckconfig.js']) i18n
+
+[bootstrap4nt:text]> jnt:content, bootstrap4mix:component, bootstrap4mix:text
+
+[bootstrap4mix:advancedBreadcrumb] mixin
+ extends = bootstrap4nt:breadcrumb
+ itemtype = content
+ - cssClass (string) = 'pull-left'
+
+[bootstrap4nt:breadcrumb]> jnt:content, bootstrap4mix:component, jmix:studioOnly
+
+[bootstrap4nt:button]> jnt:content, bootstrap4mix:component, bootstrap4mix:link
+ - style (string, choicelist[resourceBundle]) = 'primary' autocreated < 'primary', 'secondary', 'success', 'info', 'warning', 'danger', 'link'
+ - size (string, choicelist[resourceBundle]) = 'default' autocreated < 'default', 'btn-lg', 'btn-sm'
+ - outline (boolean) = 'false' indexed=no
+ - block (boolean) = 'false' indexed=no
+ - state (string, choicelist[resourceBundle]) = 'default' autocreated < 'default', 'active', 'disabled'
+
+[bootstrap4mix:internalLink] > jmix:templateMixin mixin
+ extends = bootstrap4mix:link
+ - internalLink (weakreference,picker[type='editoriallink']) < jmix:droppableContent, jnt:page, jnt:file
+[bootstrap4mix:externalLink] > jmix:templateMixin mixin
+ extends = bootstrap4mix:link
+ - externalLink (string) = 'http://'
+
+[bootstrap4mix:link] mixin
+ - linkTitle (string) internationalized
+ - linkType (string, choicelist[linkTypeInitializer,resourceBundle]) = 'noLink' autocreated < 'internalLink', 'externalLink', 'noLink'
+
+[bootstrap4nt:card]> jnt:content, bootstrap4mix:component, mix:title, jmix:list, bootstrap4mix:image
+ - headerSize (string, choicelist[resourceBundle]) = 'default' autocreated < 'default', 'h1', 'h2', 'h3', 'h4', 'h5'
+ - textAlign (string, choicelist[resourceBundle]) = 'text-left' autocreated < 'text-left', 'text-right', 'text-center'
+ - footer (string) i18n
  + * (jmix:droppableContent) = jmix:droppableContent

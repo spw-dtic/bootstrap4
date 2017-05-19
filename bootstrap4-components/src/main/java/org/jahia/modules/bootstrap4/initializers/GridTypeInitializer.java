@@ -20,9 +20,9 @@ import javax.jcr.Value;
 import java.util.*;
 
 
-public class gridTypeInitializer extends AbstractChoiceListRenderer implements ModuleChoiceListInitializer, ModuleChoiceListRenderer {
+public class GridTypeInitializer extends AbstractChoiceListRenderer implements ModuleChoiceListInitializer, ModuleChoiceListRenderer {
 
-    private static final Logger logger = LoggerFactory.getLogger(gridTypeInitializer.class);
+    private static final Logger logger = LoggerFactory.getLogger(GridTypeInitializer.class);
 
     private String key;
 
