@@ -111,12 +111,17 @@
 
 [bootstrap4nt:breadcrumb]> jnt:content, bootstrap4mix:component, jmix:studioOnly
 
-[bootstrap4nt:button]> jnt:content, bootstrap4mix:component, bootstrap4mix:link
+[bootstrap4mix:buttonMixin]
  - style (string, choicelist[resourceBundle]) = 'primary' autocreated < 'primary', 'secondary', 'success', 'info', 'warning', 'danger', 'link'
  - size (string, choicelist[resourceBundle]) = 'default' autocreated < 'default', 'btn-lg', 'btn-sm'
  - outline (boolean) = 'false' indexed=no
  - block (boolean) = 'false' indexed=no
  - state (string, choicelist[resourceBundle]) = 'default' autocreated < 'default', 'active', 'disabled'
+
+[bootstrap4nt:button]> jnt:content, bootstrap4mix:component, bootstrap4mix:link, bootstrap4mix:buttonMixin
+
+[bootstrap4nt:collapse]> jnt:content, bootstrap4mix:component, mix:title, bootstrap4mix:buttonMixin, jmix:list
+ + * (jmix:droppableContent) = jmix:droppableContent
 
 [bootstrap4mix:internalLink] > jmix:templateMixin mixin
  extends = bootstrap4mix:link
