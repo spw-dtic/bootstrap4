@@ -134,3 +134,21 @@
  - textAlign (string, choicelist[resourceBundle]) = 'text-left' autocreated < 'text-left', 'text-right', 'text-center'
  - footer (string) i18n
  + * (jmix:droppableContent) = jmix:droppableContent
+
+
+[bootstrap4nt:carouselItem] > jnt:content, bootstrap4mix:image, mix:title
+ - caption (string,textarea) i18n
+
+[bootstrap4mix:carouselAdvancedSettings] mixin
+ extends = bootstrap4nt:carousel
+ itemtype = content
+ - useIndicators (boolean) = 'false' indexed=no
+ - useLeftAndRightControls (boolean) = 'true' indexed=no
+ - interval (long) = '5000' indexed=no
+ - keyboard (boolean) = 'true' indexed=no
+ - pause (boolean) = 'true' indexed=no
+ - ride (boolean) = 'false' indexed=no
+ - wrap (boolean) = 'true' indexed=no
+
+[bootstrap4nt:carousel] > jnt:content, bootstrap4mix:component, jmix:manuallyOrderable, jmix:list, jmix:siteContent orderable
+ + * (bootstrap4nt:carouselItem)
