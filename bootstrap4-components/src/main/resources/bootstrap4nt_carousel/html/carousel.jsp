@@ -83,11 +83,11 @@
     <c:if test="${useLeftAndRightControls}">
         <a class="carousel-control-prev" href="#carousel_${currentNode.identifier}" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only"><fmt:message key="bootstrap4nt_carousel.label.previous"/></span>
+            <span class="sr-only"><fmt:message key="bootstrap4nt_carousel.previous"/></span>
         </a>
         <a class="carousel-control-next" href="#carousel_${currentNode.identifier}" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only"><fmt:message key="bootstrap4nt_carousel.label.next"/></span>
+            <span class="sr-only"><fmt:message key="bootstrap4nt_carousel.next"/></span>
         </a>
     </c:if>
 </div>

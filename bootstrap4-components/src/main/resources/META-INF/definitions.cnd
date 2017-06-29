@@ -164,10 +164,10 @@ extends = bootstrap4nt:button
  - interval (long) = '5000' indexed=no
  - keyboard (boolean) = 'true' indexed=no
  - pause (boolean) = 'true' indexed=no
- - ride (boolean) = 'false' indexed=no
+ - ride (boolean) = 'true' indexed=no
  - wrap (boolean) = 'true' indexed=no
 
-[bootstrap4nt:carousel] > jnt:content, bootstrap4mix:component, jmix:manuallyOrderable, jmix:list, jmix:siteContent orderable
+[bootstrap4nt:carousel] > jnt:content, bootstrap4mix:component, jmix:list, jmix:siteContent orderable
  + * (bootstrap4nt:carouselItem)
 
 [bootstrap4mix:advancedPagination] mixin

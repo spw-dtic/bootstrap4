@@ -104,9 +104,9 @@
                     <li class="page-item${empty moduleMap.currentPage or moduleMap.currentPage le 1 ? ' disabled' : ''}">
                         <a class="page-link" tabindex="-1"
                            href="${empty moduleMap.currentPage or moduleMap.currentPage le 1 ? '#' : previousUrl}"
-                           aria-label="<fmt:message key='bootstrap4mix_advancedPagination.label.previous'/>">
+                           aria-label="<fmt:message key='bootstrap4mix_advancedPagination.previous'/>">
                             <span aria-hidden="true">&laquo;</span>
-                            <span class="sr-only"><fmt:message key="bootstrap4mix_advancedPagination.label.previous"/></span>
+                            <span class="sr-only"><fmt:message key="bootstrap4mix_advancedPagination.previous"/></span>
                         </a>
                     </li>
                     <c:choose>
@@ -187,9 +187,9 @@
 
                     <li class="page-item${moduleMap.currentPage ge moduleMap.nbPages ? ' disabled' : ''}">
                         <a class="page-link" href="${moduleMap.currentPage ge moduleMap.nbPages ? '#' : nextUrl}"
-                           aria-label="<fmt:message key='bootstrap4mix_advancedPagination.label.next'/>">
+                           aria-label="<fmt:message key='bootstrap4mix_advancedPagination.next'/>">
                             <span aria-hidden="true">&raquo;</span>
-                            <span class="sr-only"><fmt:message key="'bootstrap4mix_advancedPagination.label.next"/></span>
+                            <span class="sr-only"><fmt:message key="bootstrap4mix_advancedPagination.next"/></span>
                         </a>
                     </li>
                 </ul>

@@ -56,7 +56,7 @@
             <c:otherwise>
                 <c:if test="${renderContext.editMode}">
                     <span class="badge badge-warning">
-                        Oops: Could not founf a working link for this button!
+                        <fmt:message key="bootstrap4nt_button.noLink"/>
                     </span>
                 </c:if>
             </c:otherwise>
@@ -70,7 +70,7 @@
         </c:if>
         <c:if test="${(empty linkUrl or linkUrl eq 'http://') && renderContext.editMode}">
             <span class="badge badge-warning">
-                Oops: Could not found any URL for this button!
+                <fmt:message key="bootstrap4nt_button.noUrl"/>
             </span>
         </c:if>
         <a href="${linkUrl}" class="btn btn${outline}-${style} ${size} ${state} ${block}" role="button" ${aria}>${title}</a>
