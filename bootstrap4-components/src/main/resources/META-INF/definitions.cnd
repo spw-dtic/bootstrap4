@@ -172,3 +172,15 @@
  - openText (string) = 'Launch demo modal' i18n mandatory
  - closeText (string) = 'Close' i18n mandatory
  + * (jmix:droppableContent) = jmix:droppableContent
+
+[bootstrap4mix:advancedPagination] mixin
+ extends = bootstrap4nt:pagination
+ itemtype = content
+ - pageSize (long) = '10' autocreated mandatory
+ - nbOfPages (long) = '10' autocreated mandatory
+ - nbOfPagesInEdit (long) = '100' autocreated mandatory
+ - align (string,choicelist[resourceBundle]) = 'justify-content-center' indexed=no autocreated  < 'justify-content-center', 'justify-content-start', 'justify-content-end'
+ - layout (string,choicelist[resourceBundle]) = 'default' indexed=no autocreated   < 'pagination-lg', 'default', 'pagination-sm'
+
+[bootstrap4nt:pagination] > jnt:content, bootstrap4mix:component, jmix:bindedComponent
+ - displayPager (boolean) = 'true' autocreated
