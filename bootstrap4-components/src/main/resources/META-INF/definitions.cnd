@@ -70,7 +70,6 @@
  - align (string, choicelist[resourceBundle]) = 'default' autocreated < 'default', 'left', 'right', 'center'
  - alt (string) i18n
 
-
 [bootstrap4mix:imageAdvanced] > bootstrap4mix:image mixin
 
 [bootstrap4mix:image] mixin
@@ -111,8 +110,11 @@
 
 [bootstrap4nt:breadcrumb]> jnt:content, bootstrap4mix:component, jmix:studioOnly
 
+[bootstrap4nt:button]> jnt:content, bootstrap4mix:component, mix:title
+ - buttonType (string, choicelist[buttonTypeInitializer,resourceBundle]) = 'internalLink' autocreated < 'internalLink', 'externalLink', 'modal', 'collapse','popover'
+
 [bootstrap4mix:buttonAdvancedSettings] mixin
- extends = bootstrap4mix:button
+ extends = bootstrap4nt:button
  itemtype = content
  - style (string, choicelist[resourceBundle]) = 'primary' autocreated < 'primary', 'secondary', 'success', 'info', 'warning', 'danger', 'link'
  - size (string, choicelist[resourceBundle]) = 'default' autocreated < 'default', 'btn-lg', 'btn-sm'
@@ -120,31 +122,36 @@
  - block (boolean) = 'false' indexed=no
  - state (string, choicelist[resourceBundle]) = 'default' autocreated < 'default', 'active', 'disabled'
 
-
-[bootstrap4mix:button] mixin
- 
-[bootstrap4nt:button]> jnt:content, bootstrap4mix:component, bootstrap4mix:link, bootstrap4mix:button
-
-[bootstrap4nt:collapse]> jnt:content, bootstrap4mix:component, mix:title, bootstrap4mix:button, jmix:list
+[bootstrap4mix:collapse] > jmix:templateMixin mixin orderable
+ extends = bootstrap4nt:button
  + * (jmix:droppableContent) = jmix:droppableContent
 
 [bootstrap4mix:internalLink] > jmix:templateMixin mixin
- extends = bootstrap4mix:link
+ extends = bootstrap4nt:button
  - internalLink (weakreference,picker[type='editoriallink']) < jmix:droppableContent, jnt:page, jnt:file
+
 [bootstrap4mix:externalLink] > jmix:templateMixin mixin
- extends = bootstrap4mix:link
+ extends = bootstrap4nt:button
  - externalLink (string) = 'http://'
 
-[bootstrap4mix:link] mixin
- - linkTitle (string) internationalized
- - linkType (string, choicelist[linkTypeInitializer,resourceBundle]) = 'noLink' autocreated < 'internalLink', 'externalLink', 'noLink'
+[bootstrap4mix:modal] > jmix:templateMixin mixin orderable
+extends = bootstrap4nt:button
+ - modalTitle (string) i18n
+ - closeText (string) = 'Close' i18n
+ - modalSize (string, choicelist[resourceBundle]) = 'default' indexed=no autocreated < 'default', 'lg', 'sm'
+ + * (jmix:droppableContent) = jmix:droppableContent
+
+[bootstrap4mix:popover] > jmix:templateMixin mixin
+ extends = bootstrap4nt:button
+ - popoverTitle (string) i18n
+ - popoverContent (string) i18n
+ - direction (string, choicelist[resourceBundle]) = 'top' indexed=no autocreated < 'top', 'left', 'right', 'bottom'
 
 [bootstrap4nt:card]> jnt:content, bootstrap4mix:component, mix:title, jmix:list, bootstrap4mix:image
  - headerSize (string, choicelist[resourceBundle]) = 'default' autocreated < 'default', 'h1', 'h2', 'h3', 'h4', 'h5'
  - textAlign (string, choicelist[resourceBundle]) = 'text-left' autocreated < 'text-left', 'text-right', 'text-center'
  - footer (string) i18n
  + * (jmix:droppableContent) = jmix:droppableContent
-
 
 [bootstrap4nt:carouselItem] > jnt:content, bootstrap4mix:image, mix:title
  - caption (string,textarea) i18n
@@ -162,16 +169,6 @@
 
 [bootstrap4nt:carousel] > jnt:content, bootstrap4mix:component, jmix:manuallyOrderable, jmix:list, jmix:siteContent orderable
  + * (bootstrap4nt:carouselItem)
-
-
-[bootstrap4mix:advancedModal] mixin
- extends = bootstrap4nt:modal
- - modalSize (string, choicelist[resourceBundle]) = 'default' indexed=no autocreated < 'default', 'lg', 'sm'
-
-[bootstrap4nt:modal] >  jnt:content, bootstrap4mix:component, mix:title, jmix:list, jmix:siteContent, bootstrap4mix:button
- - openText (string) = 'Launch demo modal' i18n mandatory
- - closeText (string) = 'Close' i18n mandatory
- + * (jmix:droppableContent) = jmix:droppableContent
 
 [bootstrap4mix:advancedPagination] mixin
  extends = bootstrap4nt:pagination

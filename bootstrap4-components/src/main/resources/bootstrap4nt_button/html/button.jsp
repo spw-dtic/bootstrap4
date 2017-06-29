@@ -5,15 +5,15 @@
 <%@ taglib prefix="jcr" uri="http://www.jahia.org/tags/jcr" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--@elvariable id="currentNode" type="org.jahia.services.content.JCRNodeWrapper"--%>
-<%--
-- style (string, choicelist[resourceBundle]) = 'primary' autocreated < 'primary', 'secondary', 'success', 'info', 'warning', 'danger', 'link'
- - size (string, choicelist[resourceBundle]) = 'default' autocreated < 'default', 'btn-lg', 'btn-sm', 'info', 'warning', 'danger', 'link'
- - outline (boolean) = 'false' indexed=no
- - block (boolean) = 'false' indexed=no
- - state (string, choicelist[resourceBundle]) = 'default' autocreated < 'default', 'active', 'disabled'
---%>
-<c:set var="linkTitle" value="${currentNode.properties.linkTitle.string}"/>
+
+<template:addResources type="css" resources="bootstrap.min.css"/>
+<template:addResources type="javascript" resources="jquery.min.js,tether.min.js,bootstrap.min.js"/>
+
+<c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
+<c:set var="buttonType" value="${currentNode.properties.buttonType.string}"/>
 <c:set var="linkUrl" value="#"/>
+
+<c:set var="style" value="primary"/>
 
 <c:if test="${jcr:isNodeType(currentNode, 'bootstrap4mix:buttonAdvancedSettings')}">
     <c:set var="style" value="${currentNode.properties.style.string}"/>
@@ -43,28 +43,122 @@
     </c:if>
 </c:if>
 
-<c:if test="${empty style}">
-    <c:set var="style" value="primary"/>
-</c:if>
-
-
-
 <c:choose>
-    <c:when test="${jcr:isNodeType(currentNode, 'bootstrap4mix:internalLink')}">
+    <c:when test="${buttonType eq 'internalLink'}">
         <c:set var="internalLinkNode" value="${currentNode.properties.internalLink.node}"/>
-        <c:if test="${! empty internalLinkNode}">
-            <c:url var="linkUrl" value="${internalLinkNode.url}"/>
-            <c:if test="${empty linkTitle}">
-                <c:url var="linkTitle" value="${internalLinkNode.displayableName}"/>
-            </c:if>
-        </c:if>
+        <c:choose>
+            <c:when test="${! empty internalLinkNode}">
+                <c:url var="linkUrl" value="${internalLinkNode.url}"/>
+                <c:if test="${empty title}">
+                    <c:set var="title" value="${internalLinkNode.displayableName}"/>
+                </c:if>
+            </c:when>
+            <c:otherwise>
+                <c:if test="${renderContext.editMode}">
+                    <span class="badge badge-warning">
+                        Oops: Could not founf a working link for this button!
+                    </span>
+                </c:if>
+            </c:otherwise>
+        </c:choose>
+        <a href="${linkUrl}" class="btn btn${outline}-${style} ${size} ${state} ${block}" role="button" ${aria}>${title}</a>
     </c:when>
-    <c:when test="${jcr:isNodeType(currentNode, 'bootstrap4mix:externalLink')}">
+    <c:when test="${buttonType eq 'externalLink'}">
         <c:url var="linkUrl" value="${currentNode.properties.externalLink.string}"/>
-        <c:if test="${empty linkTitle}">
-            <fmt:message key="bootstrap4nt_button.readMore" var="linkTitle"/>
+        <c:if test="${empty title}">
+            <fmt:message key="bootstrap4nt_button.readMore" var="title"/>
         </c:if>
+        <c:if test="${(empty linkUrl or linkUrl eq 'http://') && renderContext.editMode}">
+            <span class="badge badge-warning">
+                Oops: Could not found any URL for this button!
+            </span>
+        </c:if>
+        <a href="${linkUrl}" class="btn btn${outline}-${style} ${size} ${state} ${block}" role="button" ${aria}>${title}</a>
     </c:when>
+    <c:when test="${buttonType eq 'modal'}">
+        <c:set var="modalSize" value=" modal-${currentNode.properties.modalSize.string}"/>
+        <c:set var="modalTitle" value="${currentNode.properties.modalTitle.string}"/>
+        <c:set var="closeText" value="${currentNode.properties.closeText.string}"/>
+        <c:if test="${modalSize eq ' modal-default'}">
+            <c:remove var="modalSize"/>
+        </c:if>
+        <c:if test="${empty title}">
+            <fmt:message key="bootstrap4nt_button.readMore" var="title"/>
+        </c:if>
+        <c:if test="${empty closeText}">
+            <fmt:message key="bootstrap4nt_button.close" var="closeText"/>
+        </c:if>
+        <button type="button" class="btn btn${outline}-${style} ${size} ${state} ${block}" ${aria} data-toggle="modal" data-target="#modal-${currentNode.identifier}">
+            ${title}
+        </button>
+        <div class="modal fade" id="modal-${currentNode.identifier}" tabindex="-1" role="dialog" aria-labelledby="modalLabel_${currentNode.identifier}" aria-hidden="${renderContext.editMode ? 'false' : 'true'}">
+            <div class="modal-dialog ${modalSize}"<c:if test='${renderContext.editMode}'> style="margin:5px;"</c:if>>
+                <div class="modal-content">
+                    <c:if test="${not empty modalTitle}">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel_${currentNode.identifier}">${modalTitle}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </c:if>
+                    <div class="modal-body">
+                        <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jmix:droppableContent')}" var="droppableContent">
+                            <template:module node="${droppableContent}" editable="true"/>
+                        </c:forEach>
+                        <c:if test="${renderContext.editMode}">
+                            <template:module path="*" nodeTypes="jmix:droppableContent"/>
+                        </c:if>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-${state}" data-dismiss="modal">${closeText}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </c:when>
+    <c:when test="${buttonType eq 'collapse'}">
+        <c:if test="${empty title}">
+            <fmt:message key="bootstrap4nt_button.readMore" var="title"/>
+        </c:if>
+        <a href="#collapse-${currentNode.identifier}" class="btn btn${outline}-${style} ${size} ${state} ${block}" ${aria} data-toggle="collapse" aria-expanded="false" aria-controls="collapse-${currentNode.identifier}">${title}</a>
+        <div class="collapse" id="collapse-${currentNode.identifier}">
+            <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jmix:droppableContent')}" var="droppableContent">
+                <template:module node="${droppableContent}" editable="true"/>
+            </c:forEach>
+            <c:if test="${renderContext.editMode}">
+                <template:module path="*" nodeTypes="jmix:droppableContent"/>
+            </c:if>
+        </div>
+    </c:when>
+    <c:when test="${buttonType eq 'popover'}">
+        <c:if test="${empty title}">
+            <fmt:message key="bootstrap4nt_button.readMore" var="title"/>
+        </c:if>
+        <c:set var="direction" value="${currentNode.properties.direction.string}"/>
+        <c:set var="popoverTitle" value="${currentNode.properties.popoverTitle.string}"/>
+        <c:set var="popoverContent" value="${currentNode.properties.popoverContent.string}"/>
+        <c:if test="${! empty popoverTitle}">
+            <c:set var="pTitle"> title="${fn:escapeXml(popoverTitle)}"</c:set>
+        </c:if>
+        <c:if test="${! empty popoverContent}">
+            <c:set var="pContent"> data-content="${fn:escapeXml(popoverContent)}"</c:set>
+        </c:if>
+        <button type="button" class="btn btn${outline}-${style} ${size} ${state} ${block}" ${aria} data-toggle="popover" ${pTitle} ${pContent} data-container="body" data-placement="${direction}" data-trigger="focus">${title}</button>
+        <template:addResources type="inline">
+            <script>
+                $(function () {
+                    $('[data-toggle="popover"]').popover()
+                })
+            </script>
+        </template:addResources>
+    </c:when>
+    <c:otherwise>
+        <c:if test="${renderContext.editMode}">
+
+        </c:if>
+        <%-- disabled --%>
+    </c:otherwise>
 </c:choose>
 
-<a href="${linkUrl}" class="btn btn${outline}-${style} ${size} ${state} ${block}" role="button" ${aria}>${linkTitle}</a>
+

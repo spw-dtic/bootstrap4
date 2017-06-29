@@ -37,7 +37,6 @@
                 <c:set var="pageSizeValue" value="${currentNode.properties.pageSize.long}"/>
                 <c:set var="nbOfPagesInEdit" value="${currentNode.properties.nbOfPagesInEdit.long}"/>
             </c:if>
-
             <c:set var="pageSize" value="${renderContext.editMode ? nbOfPagesInEdit : pageSizeValue}"/>
         </c:otherwise>
     </c:choose>
@@ -59,6 +58,14 @@
         <c:set var="nbOfPages" value="10"/>
         <c:if test="${jcr:isNodeType(currentNode, 'bootstrap4mix:advancedPagination')}">
             <c:set var="nbOfPages" value="${currentNode.properties.nbOfPages.long}"/>
+            <c:set var="layout" value="${currentNode.properties.layout.string}"/>
+            <c:if test="${layout eq 'default'}">
+                <c:remove var="layout"/>
+            </c:if>
+            <c:set var="align" value=" ${currentNode.properties.align.string}"/>
+            <c:if test="${align eq ' justify-content-start'}">
+                <c:remove var="align"/>
+            </c:if>
         </c:if>
         <c:if test="${not empty moduleMap.paginationActive and moduleMap.totalSize > 0 and moduleMap.nbPages > 0}">
             <c:set target="${moduleMap}" property="usePagination" value="true"/>
@@ -71,19 +78,8 @@
                            value="${not empty moduleMap.pagerUrl ? moduleMap.pagerUrl : url.mainResource}${not empty moduleMap.pagerUrl ? '':'?'}"/>
                 </c:otherwise>
             </c:choose>
-            <c:if test="${jcr:isNodeType(currentNode, 'bootstrap4mix:advancedPagination')}">
-                <c:set var="layout" value="${currentNode.properties.layout.string}"/>
-                <c:if test="${layout eq 'default'}">
-                    <c:remove var="layout"/>
-                </c:if>
 
-                <c:set var="align" value="${currentNode.properties.align.string}"/>
-                <c:if test="${align eq 'justify-content-start'}">
-                    <c:remove var="align"/>
-                </c:if>
-            </c:if>
-
-                <ul class="pagination ${layout}${' '}${align}">
+                <ul class="pagination ${layout} ${align}">
                     <c:url value="${searchUrl}" var="previousUrl" context="/">
                         <c:param name="${beginid}" value="${(moduleMap.currentPage-2) * moduleMap.pageSize }"/>
                         <c:param name="${endid}" value="${ (moduleMap.currentPage-1)*moduleMap.pageSize-1}"/>
