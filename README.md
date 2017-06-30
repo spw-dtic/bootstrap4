@@ -1,5 +1,5 @@
-# bootstrap4
-This is a Bootstrap 4 Components implementation of https://v4-alpha.getbootstrap.com/components/alerts/ for Digital Experience Manager
+# Bootstrap 4 Components
+This is a Bootstrap 4 Components implementation of https://v4-alpha.getbootstrap.com for Digital Experience Manager
 
 # List of components : 
 ## Breadcrump
