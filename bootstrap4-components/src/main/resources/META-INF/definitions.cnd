@@ -181,3 +181,11 @@ extends = bootstrap4nt:button
 
 [bootstrap4nt:pagination] > jnt:content, bootstrap4mix:component, jmix:bindedComponent
  - displayPager (boolean) = 'true' autocreated
+
+[bootstrap4mix:advancedNavbar] mixin
+ extends = bootstrap4nt:navbar
+ itemtype = content
+ - navClass (string) = 'navbar navbar-toggleable-md navbar-light bg-faded'
+
+[bootstrap4nt:navbar] > jnt:content, bootstrap4mix:component
+ - root (string,choicelist[resourceBundle]) = 'homePage' indexed=no autocreated   < 'homePage', 'currentPage', 'parentPage'

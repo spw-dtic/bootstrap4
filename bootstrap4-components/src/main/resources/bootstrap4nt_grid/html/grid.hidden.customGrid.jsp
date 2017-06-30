@@ -17,12 +17,11 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 
-<c:set var="columns" value="${currentNode.properties['gridClasses'].string}"/>
+<c:set var="columns" value="${currentNodeproperties.gridClasses.string}"/>
 <c:set var="colName" value="${currentNode.name}"/>
 <c:set var="createAbsoluteAreas" value="${jcr:isNodeType(currentNode, 'bootstrap4mix:createAbsoluteAreas')}"/>
 <c:set var="moduleType" value="${createAbsoluteAreas? 'absoluteArea' : 'area'}"/>
-<c:set var="level" value="${createAbsoluteAreas? currentNode.properties['level'].string : '0'}"/>
-<c:set var="level" value="${createAbsoluteAreas? currentNode.properties['level'].string : '0'}" />
+<c:set var="level" value="${createAbsoluteAreas? currentNode.properties.level.string : '0'}" />
 <c:if test="${createAbsoluteAreas && renderContext.editModeConfigName eq 'studiomode'}">
     <c:set var="displayAbsoluteArea">
         <div class="panel panel-danger">
