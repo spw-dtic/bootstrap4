@@ -1,5 +1,5 @@
 # Bootstrap 4 
-This is a Bootstrap 4 implementation of https://v4-alpha.getbootstrap.com for Digital Experience Manager
+This is a Bootstrap 4 implementation of https://v4-alpha.getbootstrap.com for Digital Experience Manager. This version is a draft based on the alpha 6 version of Bootstrap 4. This is a non supported version, also not compliant with the official bootstrap 3 version.
 
 # Installation/dependances
 You first need to install this 2 dependance (extenal modules):
