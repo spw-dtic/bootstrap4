@@ -1,5 +1,11 @@
-# Bootstrap 4 Components
-This is a Bootstrap 4 Components implementation of https://v4-alpha.getbootstrap.com for Digital Experience Manager
+# Bootstrap 4 
+This is a Bootstrap 4 implementation of https://v4-alpha.getbootstrap.com for Digital Experience Manager
+
+# Installation/dependances
+You first need to install this 2 dependance (extenal modules):
+ * jQuery 3: avaliable in a non supported version at https://github.com/pvollenweider/jquery 
+ * Tether: avaliable on the store https://store.jahia.com/contents/modules-repository/org/jahia/modules/tether.html
+Then you can deploy the bootstrap4-core module and the bootstrap4-components
 
 # List of components : 
 ## Breadcrump
