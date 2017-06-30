@@ -29,7 +29,7 @@ Bootstrap includes a powerful mobile-first flexbox grid system for building layo
 ## Media object
 The media object helps build complex and repetitive components where some media is positioned alongside content that doesn’t wrap around said media. 
 
-# Navbar
+## Navbar
 The navbar is a wrapper that positions navigation for your site
 
 ## Pagination
