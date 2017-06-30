@@ -5,6 +5,7 @@ This is a Bootstrap 4 implementation of https://v4-alpha.getbootstrap.com for Di
 You first need to install this 2 dependance (extenal modules):
  * jQuery 3: avaliable in a non supported version at https://github.com/pvollenweider/jquery 
  * Tether: avaliable on the store https://store.jahia.com/contents/modules-repository/org/jahia/modules/tether.html
+
 Then you can deploy the bootstrap4-core module and the bootstrap4-components
 
 # List of components : 
@@ -36,7 +37,7 @@ Bootstrap includes a powerful mobile-first flexbox grid system for building layo
 The media object helps build complex and repetitive components where some media is positioned alongside content that doesn’t wrap around said media. 
 
 ## Navbar
-The navbar is a wrapper that positions navigation for your site
+The navbar provides a simple navigation for your site
 
 ## Pagination
 Pagination links indicate a series of related content exists across multiple pages.
