@@ -29,11 +29,10 @@
     </c:choose>
 </c:if>
 <c:if test="${fn:length(pageNodes) > 1}">
-    <c:set var="cssClass"/>
     <c:if test="${jcr:isNodeType(currentNode,'bootstrap4mix:advancedBreadcrumb' )}">
-        <c:set var="cssClass" value="${currentNode.properties.cssClass.string}"/>
+        <c:set var="cssClass" value=" ${currentNode.properties.cssClass.string}"/>
     </c:if>
-    <ol class='breadcrumb<c:if test="${not empty cssClass}">${' '}${cssClass}</c:if>'>
+    <ol class="breadcrumb ${cssClass}">
         <c:forEach items="${functions:reverse(pageNodes)}" var="pageNode" varStatus="status">
             <c:choose>
                 <c:when test="${jcr:findDisplayableNode(pageNode, renderContext) ne pageNode}">
