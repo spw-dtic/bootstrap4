@@ -40,7 +40,7 @@
     <c:if test="${! empty title}">
         <${headerSize} class="card-header">${title}</${headerSize}>
     </c:if>
-    <div class="card-block">
+    <div class="card-body">
         <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jmix:droppableContent')}" var="droppableContent">
             <template:module node="${droppableContent}" editable="true"/>
         </c:forEach>
