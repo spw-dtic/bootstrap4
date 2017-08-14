@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="jcr" uri="http://www.jahia.org/tags/jcr" %>
 <%--@elvariable id="currentNode" type="org.jahia.services.content.JCRNodeWrapper"--%>
+<template:addResources type="css" resources="bootstrap.min.css"/>
 
 <%-- default value for imageMargin is set to mr-3 (or ml-3 if image is set on right). User is allow to update it --%>
 <c:set var="imageMargin" value="mr-3"/>

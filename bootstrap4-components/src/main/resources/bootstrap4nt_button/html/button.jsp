@@ -7,7 +7,9 @@
 <%--@elvariable id="currentNode" type="org.jahia.services.content.JCRNodeWrapper"--%>
 
 <template:addResources type="css" resources="bootstrap.min.css"/>
-<template:addResources type="javascript" resources="jquery.min.js,popper.min.js,bootstrap.min.js"/>
+<template:addResources type="javascript" resources="jquery.min.js"/>
+<template:addResources type="javascript" resources="popper.min.js"/>
+<template:addResources type="javascript" resources="bootstrap.min.js"/>
 
 <c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
 <c:set var="buttonType" value="${currentNode.properties.buttonType.string}"/>
