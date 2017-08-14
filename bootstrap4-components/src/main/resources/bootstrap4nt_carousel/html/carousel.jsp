@@ -71,7 +71,7 @@
     </c:if>
 
     <%-- Wrapper for slides --%>
-    <div class="carousel-inner${renderContext.editMode?'edit':''}" role="listbox">
+    <div class="carousel-inner${renderContext.editMode?'edit':''}">
         <c:forEach items="${items}" var="item" varStatus="status">
             <div class="carousel-item${renderContext.editMode?'edit':''}${status.first?' active':''}">
                 <template:module node="${item}" nodeTypes="bootstrap4nt:carouselItem"/>

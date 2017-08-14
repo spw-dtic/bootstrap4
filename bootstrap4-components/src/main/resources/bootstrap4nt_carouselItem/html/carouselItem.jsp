@@ -39,7 +39,7 @@
     <c:otherwise>
         <c:if test="${! empty imageNode}">
             <template:include view="image">
-                <template:param name="class" value="d-block"/>
+                <template:param name="class" value="d-block w-100"/>
             </template:include>
         </c:if>
         <c:if test="${! empty title || ! empty caption}">

@@ -116,7 +116,7 @@
 [bootstrap4mix:buttonAdvancedSettings] mixin
  extends = bootstrap4nt:button
  itemtype = content
- - style (string, choicelist[resourceBundle]) = 'primary' autocreated < 'primary', 'secondary', 'success', 'info', 'warning', 'danger', 'link'
+ - style (string, choicelist[resourceBundle]) = 'primary' autocreated < 'primary', 'secondary', 'success', 'info', 'warning', 'danger', 'link','dark','link'
  - size (string, choicelist[resourceBundle]) = 'default' autocreated < 'default', 'btn-lg', 'btn-sm'
  - outline (boolean) = 'false' indexed=no
  - block (boolean) = 'false' indexed=no
@@ -185,7 +185,7 @@ extends = bootstrap4nt:button
 [bootstrap4mix:advancedNavbar] mixin
  extends = bootstrap4nt:navbar
  itemtype = content
- - navClass (string) = 'navbar navbar-toggleable-md navbar-light bg-faded'
+ - navClass (string) = 'navbar navbar-expand-lg navbar-light bg-light'
  - brandImage (weakreference, picker[type='image']) < 'jmix:image'
  - brandText (string) i18n
 
