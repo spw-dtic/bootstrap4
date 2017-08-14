@@ -12,7 +12,7 @@
 
 <c:set var="navClass" value="${currentNode.properties.navClass.string}"/>
 <c:if test="${empty navClass}">
-    <c:set var="navClass" value="navbar navbar-toggleable-md navbar-light bg-faded"/>
+    <c:set var="navClass" value="navbar navbar-expand-lg navbar-light"/>
 </c:if>
 
 
@@ -31,17 +31,28 @@
 </c:choose>
 
 <nav class="${navClass}">
+    <a class="navbar-brand" href="#">
+        <c:if test="${jcr:isNodeType(currentNode, 'bootstrap4mix:advancedNavbar')}">
+            <c:set var="brandImage" value="${currentNode.properties.brandImage.node}"/>
+            <c:if test="${! empty brandImage}">
+                <c:url var="brandImageUrl" value="${brandImage.url}"/>
+                <img src="${brandImageUrl}" width="30" height="30" class="d-inline-block align-top" alt="">
+            </c:if>
+            ${currentNode.properties.brandText.string}
+        </c:if>
+    </a>
+
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbar-${currentNode.identifier}" aria-controls="navbar-${currentNode.identifier}"
             aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="#"></a>
+
     <c:set var="level1Pages" value="${jcr:getChildrenOfType(rootNode, 'jmix:navMenuItem')}"/>
     <c:set var="hasLevel1Pages" value="${fn:length(level1Pages) > 1}"/>
     <c:if test="${hasLevel1Pages}">
         <div class="collapse navbar-collapse" id="navbar-${currentNode.identifier}">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav mr-auto">
                 <c:forEach items="${level1Pages}" var="level1Page" varStatus="status">
                     <c:choose>
                         <c:when test="${jcr:isNodeType(level1Page, 'jnt:navMenuText')}">

@@ -186,6 +186,8 @@ extends = bootstrap4nt:button
  extends = bootstrap4nt:navbar
  itemtype = content
  - navClass (string) = 'navbar navbar-toggleable-md navbar-light bg-faded'
+ - brandImage (weakreference, picker[type='image']) < 'jmix:image'
+ - brandText (string) i18n
 
 [bootstrap4nt:navbar] > jnt:content, bootstrap4mix:component
  - root (string,choicelist[resourceBundle]) = 'homePage' indexed=no autocreated   < 'homePage', 'currentPage', 'parentPage'
