@@ -64,7 +64,7 @@
   </scm>
   <properties>
     <Jahia-Module-Priority>1</Jahia-Module-Priority>
-    <jahia-depends>bootstrap4-core,default,tether,jquery</jahia-depends>
+    <jahia-depends>bootstrap4-core,default,jquery,popperjs</jahia-depends>
   </properties>
   <repositories>
     <repository>
