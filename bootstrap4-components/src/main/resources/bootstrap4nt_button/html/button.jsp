@@ -23,6 +23,7 @@
     <c:set var="state" value="${currentNode.properties.state.string}"/>
     <c:set var="outline" value="${currentNode.properties.outline.boolean ? '-outline' : ''}"/>
     <c:set var="block" value="${currentNode.properties.block.boolean ? ' btn-block' : ''}"/>
+    <c:set var="cssClass" value=" ${currentNode.properties.cssClass.string}"/>
     <c:choose>
         <c:when test="${state == 'active'}">
             <c:set var="aria">aria-pressed="true"</c:set>
@@ -44,6 +45,14 @@
         <c:set var="state" value=" ${state}"/>
     </c:if>
 </c:if>
+<c:choose>
+    <c:when test="${style eq 'custom'}">
+        <c:set var="buttonClass" value="${cssClass}"/>
+    </c:when>
+    <c:otherwise>
+        <c:set var="buttonClass" value="btn btn${outline}-${style} ${size} ${state} ${block} ${cssClass}"/>
+    </c:otherwise>
+</c:choose>
 
 <c:choose>
     <c:when test="${buttonType eq 'internalLink'}">
@@ -63,7 +72,7 @@
                 </c:if>
             </c:otherwise>
         </c:choose>
-        <a href="${linkUrl}" class="btn btn${outline}-${style} ${size} ${state} ${block}" role="button" ${aria}>${title}</a>
+        <a href="${linkUrl}" class="${buttonClass}" role="button" ${aria}>${title}</a>
     </c:when>
     <c:when test="${buttonType eq 'externalLink'}">
         <c:url var="linkUrl" value="${currentNode.properties.externalLink.string}"/>
@@ -75,7 +84,7 @@
                 <fmt:message key="bootstrap4nt_button.noUrl"/>
             </span>
         </c:if>
-        <a href="${linkUrl}" class="btn btn${outline}-${style} ${size} ${state} ${block}" role="button" ${aria}>${title}</a>
+        <a href="${linkUrl}" class="${buttonClass}" role="button" ${aria}>${title}</a>
     </c:when>
     <c:when test="${buttonType eq 'modal'}">
         <c:set var="modalSize" value=" modal-${currentNode.properties.modalSize.string}"/>
@@ -90,7 +99,7 @@
         <c:if test="${empty closeText}">
             <fmt:message key="bootstrap4nt_button.close" var="closeText"/>
         </c:if>
-        <button type="button" class="btn btn${outline}-${style} ${size} ${state} ${block}" ${aria} data-toggle="modal" data-target="#modal-${currentNode.identifier}">
+        <button type="button" class="${buttonClass}" ${aria} data-toggle="modal" data-target="#modal-${currentNode.identifier}">
             ${title}
         </button>
         <div class="modal fade" id="modal-${currentNode.identifier}" tabindex="-1" role="dialog" aria-labelledby="modalLabel_${currentNode.identifier}" aria-hidden="${renderContext.editMode ? 'false' : 'true'}">
@@ -123,7 +132,7 @@
         <c:if test="${empty title}">
             <fmt:message key="bootstrap4nt_button.readMore" var="title"/>
         </c:if>
-        <a href="#collapse-${currentNode.identifier}" class="btn btn${outline}-${style} ${size} ${state} ${block}" ${aria} data-toggle="collapse" aria-expanded="false" aria-controls="collapse-${currentNode.identifier}">${title}</a>
+        <a href="#collapse-${currentNode.identifier}" class="${buttonClass}" ${aria} data-toggle="collapse" aria-expanded="false" aria-controls="collapse-${currentNode.identifier}">${title}</a>
         <div class="collapse" id="collapse-${currentNode.identifier}">
             <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jmix:droppableContent')}" var="droppableContent">
                 <template:module node="${droppableContent}" editable="true"/>
@@ -146,7 +155,7 @@
         <c:if test="${! empty popoverContent}">
             <c:set var="pContent"> data-content="${fn:escapeXml(popoverContent)}"</c:set>
         </c:if>
-        <button type="button" class="btn btn${outline}-${style} ${size} ${state} ${block}" ${aria} data-toggle="popover" ${pTitle} ${pContent} data-container="body" data-placement="${direction}" data-trigger="focus">${title}</button>
+        <button type="button" class="${buttonClass}" ${aria} data-toggle="popover" ${pTitle} ${pContent} data-container="body" data-placement="${direction}" data-trigger="focus">${title}</button>
         <template:addResources type="inline">
             <script>
                 $(function () {

@@ -9,11 +9,26 @@
 <template:addResources type="javascript" resources="popper.min.js"/>
 <template:addResources type="javascript" resources="bootstrap.min.js"/>
 
-
-<c:set var="navClass" value="${currentNode.properties.navClass.string}"/>
-<c:if test="${empty navClass}">
-    <c:set var="navClass" value="navbar navbar-expand-lg navbar-light"/>
+<c:if test="${jcr:isNodeType(currentNode, 'bootstrap4mix:advancedNavbar')}">
+    <c:set var="buttonClass" value="${currentNode.properties.buttonClass.string}"/>
+    <c:set var="navClass" value="${currentNode.properties.navClass.string}"/>
+    <c:set var="divClass" value="${currentNode.properties.divClass.string}"/>
+    <c:set var="ulClass" value="${currentNode.properties.ulClass.string}"/>
 </c:if>
+<c:if test="${empty buttonClass}">
+    <c:set var="buttonClass" value="navbar-toggler navbar-toggler-right"/>
+</c:if>
+<c:if test="${empty navClass}">
+    <c:set var="navClass" value="navbar navbar-expand-lg navbar-light bg-light"/>
+</c:if>
+<c:if test="${empty divClass}">
+    <c:set var="divClass" value="collapse navbar-collapse"/>
+</c:if>
+<c:if test="${empty ulClass}">
+    <c:set var="ulClass" value="navbar-nav mr-auto"/>
+</c:if>
+
+
 
 
 <c:set var="root" value="${currentNode.properties.root.string}"/>
@@ -31,7 +46,8 @@
 </c:choose>
 
 <nav class="${navClass}">
-    <a class="navbar-brand" href="#">
+    <c:url var="rootNodeUrl" value="${rootNode.url}" context="/"/>
+    <a class="navbar-brand" href="${rootNodeUrl}">
         <c:if test="${jcr:isNodeType(currentNode, 'bootstrap4mix:advancedNavbar')}">
             <c:set var="brandImage" value="${currentNode.properties.brandImage.node}"/>
             <c:if test="${! empty brandImage}">
@@ -42,7 +58,7 @@
         </c:if>
     </a>
 
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+    <button class="${buttonClass}" type="button" data-toggle="collapse"
             data-target="#navbar-${currentNode.identifier}" aria-controls="navbar-${currentNode.identifier}"
             aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -51,8 +67,8 @@
     <c:set var="level1Pages" value="${jcr:getChildrenOfType(rootNode, 'jmix:navMenuItem')}"/>
     <c:set var="hasLevel1Pages" value="${fn:length(level1Pages) > 1}"/>
     <c:if test="${hasLevel1Pages}">
-        <div class="collapse navbar-collapse" id="navbar-${currentNode.identifier}">
-            <ul class="navbar-nav mr-auto">
+        <div class="${divClass}" id="navbar-${currentNode.identifier}">
+            <ul class="${ulClass}">
                 <c:forEach items="${level1Pages}" var="level1Page" varStatus="status">
                     <c:choose>
                         <c:when test="${jcr:isNodeType(level1Page, 'jnt:navMenuText')}">
