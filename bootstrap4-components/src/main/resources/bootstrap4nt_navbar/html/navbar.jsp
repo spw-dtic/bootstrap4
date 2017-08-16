@@ -14,6 +14,9 @@
     <c:set var="navClass" value="${currentNode.properties.navClass.string}"/>
     <c:set var="divClass" value="${currentNode.properties.divClass.string}"/>
     <c:set var="ulClass" value="${currentNode.properties.ulClass.string}"/>
+    <c:set var="recursive" value="${currentNode.properties.recursive.boolean}"/>
+    <c:set var="brandImage" value="${currentNode.properties.brandImage.node}"/>
+    <c:set var="brandText" value="${currentNode.properties.brandText.string}"/>
 </c:if>
 <c:if test="${empty buttonClass}">
     <c:set var="buttonClass" value="navbar-toggler navbar-toggler-right"/>
@@ -27,9 +30,9 @@
 <c:if test="${empty ulClass}">
     <c:set var="ulClass" value="navbar-nav mr-auto"/>
 </c:if>
-
-
-
+<c:if test="${empty recursive}">
+    <c:set var="recursive" value="true"/>
+</c:if>
 
 <c:set var="root" value="${currentNode.properties.root.string}"/>
 <c:set var="curentPageNode" value="${jcr:getMeAndParentsOfType(renderContext.mainResource.node,'jnt:page')}"/>
@@ -49,12 +52,11 @@
     <c:url var="rootNodeUrl" value="${rootNode.url}" context="/"/>
     <a class="navbar-brand" href="${rootNodeUrl}">
         <c:if test="${jcr:isNodeType(currentNode, 'bootstrap4mix:advancedNavbar')}">
-            <c:set var="brandImage" value="${currentNode.properties.brandImage.node}"/>
             <c:if test="${! empty brandImage}">
                 <c:url var="brandImageUrl" value="${brandImage.url}"/>
                 <img src="${brandImageUrl}" width="30" height="30" class="d-inline-block align-top" alt="">
             </c:if>
-            ${currentNode.properties.brandText.string}
+            ${brandText}
         </c:if>
     </a>
 
@@ -96,7 +98,7 @@
                         <c:set var="page1Active" value="true"/>
                     </c:if>
                     <c:set var="level2Pages" value="${jcr:getChildrenOfType(level1Page, 'jmix:navMenuItem')}"/>
-                    <c:set var="hasLevel2Pages" value="${fn:length(level2Pages) > 1}"/>
+                    <c:set var="hasLevel2Pages" value="${fn:length(level2Pages) > 1 && recursive}"/>
                     <c:choose>
                         <c:when test="${hasLevel2Pages}">
                             <li class="nav-item  ${page1Active? ' active' :''} dropdown">
