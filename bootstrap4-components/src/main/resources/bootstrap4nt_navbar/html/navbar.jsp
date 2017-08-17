@@ -47,9 +47,8 @@
         <c:set var="rootNode" value="${renderContext.site.home}"/>
     </c:otherwise>
 </c:choose>
-
 <nav class="${navClass}">
-    <c:url var="rootNodeUrl" value="${rootNode.url}" context="/"/>
+    <c:url var="rootNodeUrl" value="${rootNode.url}"/>
     <a class="navbar-brand" href="${rootNodeUrl}">
         <c:if test="${jcr:isNodeType(currentNode, 'bootstrap4mix:advancedNavbar')}">
             <c:if test="${! empty brandImage}">
@@ -102,11 +101,13 @@
                     <c:choose>
                         <c:when test="${hasLevel2Pages}">
                             <li class="nav-item  ${page1Active? ' active' :''} dropdown">
-                                <a class="nav-link dropdown-toggle ${page1Active? ' active' :''}" href="#" id="navbarDropdownMen-${level1Page.identifier}"
+                                <a class="nav-link dropdown-toggle ${page1Active? ' active' :''}" href="#"
+                                   id="navbarDropdownMen-${level1Page.identifier}"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    ${page1Title}
+                                        ${page1Title}
                                 </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMen-${level1Page.identifier}">
+                                <div class="dropdown-menu"
+                                     aria-labelledby="navbarDropdownMen-${level1Page.identifier}">
                                     <a class="dropdown-item" href="${page1Url}">${page1Title}</a>
                                     <div class="dropdown-divider"></div>
                                     <c:forEach items="${level2Pages}" var="level2Page" varStatus="status">
@@ -116,7 +117,8 @@
                                                 <c:set var="page2Title" value="${level2Page.displayableName}"/>
                                             </c:when>
                                             <c:when test="${jcr:isNodeType(level2Page, 'jnt:externalLink')}">
-                                                <c:url var="page2Url" value="${level2Page.properties['j:url'].string}"/>
+                                                <c:url var="page2Url"
+                                                       value="${level2Page.properties['j:url'].string}"/>
                                                 <c:set var="page2Title" value="${level2Page.displayableName}"/>
                                             </c:when>
                                             <c:when test="${jcr:isNodeType(level2Page, 'jnt:page')}">
@@ -127,15 +129,19 @@
                                                 </c:if>
                                             </c:when>
                                             <c:when test="${jcr:isNodeType(level2Page, 'jnt:nodeLink')}">
-                                                <c:url var="page2Url" value="${level2Page.properties['j:node'].node.url}"/>
-                                                <c:set var="page2Title" value="${level2Page.properties['jcr:title'].string}"/>
+                                                <c:url var="page2Url"
+                                                       value="${level2Page.properties['j:node'].node.url}"/>
+                                                <c:set var="page2Title"
+                                                       value="${level2Page.properties['jcr:title'].string}"/>
                                                 <c:if test="${empty page2Title}">
                                                     <c:set var="page2Title"
                                                            value="${level2Page.properties['j:node'].node.displayableName}"/>
                                                 </c:if>
                                             </c:when>
                                         </c:choose>
-                                        <a class="dropdown-item ${page2Active? ' active' :''}" href="${page2Url}">${page2Title}  <c:if test="${page2Active}"><span class="sr-only">(current)</span></c:if></a>
+                                        <a class="dropdown-item ${page2Active? ' active' :''}"
+                                           href="${page2Url}">${page2Title} <c:if test="${page2Active}"><span
+                                                class="sr-only">(current)</span></c:if></a>
                                         <c:remove var="page2Active"/>
                                         <c:remove var="page2Url"/>
                                         <c:remove var="page2Title"/>
@@ -145,7 +151,8 @@
                         </c:when>
                         <c:otherwise>
                             <li class="nav-item ${page1Active? ' active' :''}">
-                                <a class="nav-link" href="${page1Url}">${page1Title} <c:if test="${page1Active}"><span class="sr-only">(current)</span></c:if></a>
+                                <a class="nav-link" href="${page1Url}">${page1Title} <c:if
+                                        test="${page1Active}"><span class="sr-only">(current)</span></c:if></a>
                             </li>
                         </c:otherwise>
                     </c:choose>

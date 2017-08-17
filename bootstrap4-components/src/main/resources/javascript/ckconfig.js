@@ -123,6 +123,8 @@ CKEDITOR.addCss(
 
 CKEDITOR.dtd.$removeEmpty['i'] = 0;
 CKEDITOR.dtd.$removeEmpty['span'] = 0;
+CKEDITOR.dtd.$removeEmpty['div'] = 0;
+CKEDITOR.dtd.$removeEmpty['em'] = 0;
 
 CKEDITOR.on('instanceReady', function() {
     $(".cke_combo_inlinelabel").text("Inline styles");
