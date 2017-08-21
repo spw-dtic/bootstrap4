@@ -59,7 +59,11 @@
  - marginWhere  (string, choicelist[resourceBundle]) = 'all' autocreated indexed=no < 'all', 't', 'b', 'l', 'r', 'x', 'y'
  - marginSize (string, choicelist[resourceBundle]) = '3' autocreated indexed=no < '0', '1', '2', '3', '4', '5'
 
-[bootstrap4mix:imageAdvancedSettings] mixin
+[bootstrap4mix:borderRadius] mixin
+ - borderRadius (string, choicelist[resourceBundle]) = 'default' autocreated indexed=no < 'default','rounded','rounded-top', 'rounded-right', 'rounded-bottom','rounded-left','rounded-circle','rounded-0'
+
+
+[bootstrap4mix:imageAdvancedSettings] > bootstrap4mix:borderRadius mixin
  extends = bootstrap4mix:imageAdvanced
  itemtype = content
  - imageClass (string) indexed=no
@@ -67,7 +71,6 @@
  - imageID (string) indexed=no
  - responsive (boolean) = 'true' indexed=no
  - thumbnails (boolean) = 'false' indexed=no
- - borderRadius (string, choicelist[resourceBundle]) = 'rounded-0' autocreated indexed=no < 'rounded','rounded-top', 'rounded-right', 'rounded-bottom','rounded-left','rounded-circle','rounded-0'
  - align (string, choicelist[resourceBundle]) = 'default' autocreated indexed=no < 'default', 'left', 'right', 'center'
  - alt (string) i18n
 
@@ -148,6 +151,13 @@ extends = bootstrap4nt:button
  - popoverTitle (string) i18n
  - popoverContent (string) i18n
  - direction (string, choicelist[resourceBundle]) = 'top' autocreated indexed=no < 'top', 'left', 'right', 'bottom'
+
+[bootstrap4mix:colors] mixin
+ extends = bootstrap4nt:card
+ itemtype = content
+ - backgroundColor (string, choicelist[resourceBundle]) = 'default' autocreated indexed=no < 'default','primary','secondary','success','danger','warning','info','light','dark','white'
+ - textColor (string, choicelist[resourceBundle]) = 'dark' autocreated indexed=no < 'primary','secondary','success','danger','warning','info','light','dark'
+ - borderColor (string, choicelist[resourceBundle]) = 'default' autocreated indexed=no < 'default','primary','secondary','success','danger','warning','info','light','dark','white'
 
 [bootstrap4nt:card]> jnt:content, bootstrap4mix:component, mix:title, jmix:list, bootstrap4mix:image
  - headerSize (string, choicelist[resourceBundle]) = 'default' autocreated indexed=no < 'default', 'h1', 'h2', 'h3', 'h4', 'h5'

@@ -17,21 +17,32 @@
 <%--@elvariable id="currentResource" type="org.jahia.services.render.Resource"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
 <template:addResources type="css" resources="bootstrap.min.css"/>
-
 <c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
 <c:set var="headerSize" value="${currentNode.properties.headerSize.string}"/>
 <c:if test="${headerSize == 'default'}">
     <c:set var="headerSize" value="div"/>
 </c:if>
-<c:set var="textAlign" value="${currentNode.properties.textAlign.string}"/>
-<c:if test="${textAlign == 'text-left'}">
+<c:set var="textAlign" value=" ${currentNode.properties.textAlign.string}"/>
+<c:if test="${textAlign == ' text-left'}">
     <c:remove var="textAlign"/>
 </c:if>
 <c:set var="imageNode" value="${currentNode.properties.image.node}"/>
 <c:set var="footer" value="${currentNode.properties.footer.string}"/>
 
+<c:if test="${jcr:isNodeType(currentNode, 'bootstrap4mix:colors')}">
+    <c:set var="backgroundColor" value=" bg-${currentNode.properties.backgroundColor.string}"/>
+    <c:if test="${backgroundColor eq ' bg-default'}">
+        <c:remove var="backgroundColor"/>
+    </c:if>
+    <c:set var="textColor" value=" text-${currentNode.properties.textColor.string}"/>
+    <c:set var="borderColor" value=" border-${currentNode.properties.borderColor.string}"/>
+    <c:if test="${borderColor eq ' border-default'}">
+        <c:remove var="borderColor"/>
+    </c:if>
+</c:if>
 
-<div class="card${' '}${textAlign}">
+
+<div class="card${textAlign}${backgroundColor}${textColor}${borderColor}">
     <c:if test="${! empty imageNode}">
         <template:include view="image">
             <template:param name="class" value="card-img-top"/>
