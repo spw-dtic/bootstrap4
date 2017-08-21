@@ -24,14 +24,16 @@
 <c:set var="level" value="${createAbsoluteAreas? currentNode.properties.level.string : '0'}" />
 <c:if test="${createAbsoluteAreas && renderContext.editModeConfigName eq 'studiomode'}">
     <c:set var="displayAbsoluteArea">
-        <div class="panel panel-danger">
-            <div class="panel-heading">
-                <h3 class="panel-title"><span class="glyphicon glyphicon-lock"></span><fmt:message key="bootstrap4nt_grid.absolute.area.title"/></h3>
+        <div class="card text-white bg-danger mb-3">
+            <div class="card-header">
+                <fmt:message key="bootstrap4nt_grid.absolute.area.title"/>
             </div>
-            <div class="panel-body">
+            <div class="card-body">
+                <p class="card-text">
                 <fmt:message key="bootstrap4nt_grid.absolute.area.desc">
                     <fmt:param value="${level}"/>
                 </fmt:message>
+                </p>
             </div>
         </div>
     </c:set>
@@ -49,8 +51,10 @@
 
     <c:otherwise>
         <div class="col-md-12">
-            <div class="alert">
-                <button type="button" class="close" data-dismiss="alert">Ok</button>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
                 <strong><fmt:message key="bootstrap4nt_grid.warning"/></strong>
                 <span><fmt:message key="bootstrap4nt_grid.couldNotDisplayGrid">
                     <fmt:param value="${columns}"/>

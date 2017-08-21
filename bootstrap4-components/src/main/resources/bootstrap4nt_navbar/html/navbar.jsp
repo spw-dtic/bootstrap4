@@ -21,12 +21,20 @@
 <c:if test="${jcr:isNodeType(currentNode, 'bootstrap4mix:advancedNavbar')}">
     <c:set var="navClass" value="${currentNode.properties.navClass.string}"/>
     <c:set var="divClass" value="${currentNode.properties.divClass.string}"/>
+    <c:set var="addContainerWithinTheNavbar" value="${currentNode.properties.addContainerWithinTheNavbar.boolean}"/>
+    <c:set var="addLoginButton" value="${currentNode.properties.addLoginButton.boolean}"/>
 </c:if>
 <c:if test="${empty navClass}">
     <c:set var="navClass" value="navbar navbar-expand-lg navbar-light bg-light"/>
 </c:if>
 <c:if test="${empty divClass}">
     <c:set var="divClass" value="collapse navbar-collapse"/>
+</c:if>
+<c:if test="${empty addContainerWithinTheNavbar}">
+    <c:set var="addContainerWithinTheNavbar" value="false"/>
+</c:if>
+<c:if test="${empty addLoginButton}">
+    <c:set var="addLoginButton" value="false"/>
 </c:if>
 
 <c:set var="root" value="${currentNode.properties.root.string}"/>
@@ -43,6 +51,9 @@
     </c:otherwise>
 </c:choose>
 <nav class="${navClass}">
+    <c:if test="${addContainerWithinTheNavbar}">
+        <div class="container">
+    </c:if>
     <c:url var="rootNodeUrl" value="${rootNode.url}"/>
     <a class="navbar-brand" href="${rootNodeUrl}">
         <c:if test="${! empty brandImage}">
@@ -60,5 +71,11 @@
 
     <div class="${divClass}" id="navbar-${currentNode.identifier}">
         <template:include view="basenav"/>
+        <c:if test="${addLoginButton}">
+            <template:include view="hidden.login"/>
+        </c:if>
     </div>
+    <c:if test="${addContainerWithinTheNavbar}">
+        </div>
+    </c:if>
 </nav>
