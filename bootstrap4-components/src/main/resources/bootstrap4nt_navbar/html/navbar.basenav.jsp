@@ -16,7 +16,9 @@
 <c:if test="${empty ulClass}">
     <c:set var="ulClass" value="navbar-nav mr-auto"/>
 </c:if>
-
+<c:if test="${empty recursive}">
+    <c:set var="recursive" value="true"/>
+</c:if>
 <c:set var="root" value="${currentNode.properties.root.string}"/>
 <c:set var="curentPageNode" value="${jcr:getMeAndParentsOfType(renderContext.mainResource.node,'jnt:page')}"/>
 <c:choose>
