@@ -57,7 +57,7 @@
         <div class="col">${displayAbsoluteArea}<template:area path="${colName}-extra" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
     </c:when>
     <c:when test="${grid == '3_6_3'}">
-        <div class="col">${displayAbsoluteArea}<template:area path="${colName}-side1" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
         <div class="col-6">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
         <div class="col">${displayAbsoluteArea}<template:area path="${colName}-extra" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
     </c:when>
