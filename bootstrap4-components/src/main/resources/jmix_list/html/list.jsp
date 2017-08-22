@@ -36,9 +36,12 @@
             <c:set var="isEmpty" value="false"/>
         </c:forEach>
         <%--
-        Let's get rid of this empty div...
+        Let's get rid of this empty div... abd add this only in edit with bootstrap 4 clearfix utility.
         <c:if test="${not omitFormatting}"><div class="clear"></div></c:if>
         --%>
+        <c:if test="${renderContext.editMode}">
+            <div class="clearfix"></div>
+        </c:if>
         <c:if test="${not empty moduleMap.emptyListMessage and (renderContext.editMode or moduleMap.forceEmptyListMessageDisplay) and isEmpty}">
             ${moduleMap.emptyListMessage}
         </c:if>
