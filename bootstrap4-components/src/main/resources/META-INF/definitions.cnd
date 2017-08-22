@@ -208,12 +208,18 @@ extends = bootstrap4nt:button
  - ulClass (string) = 'navbar-nav mr-auto' autocreated indexed=no
  - recursive (boolean) = 'true' autocreated indexed=no
 
-[bootstrap4mix:customButtonNavbar] mixin
+[bootstrap4mix:brand] mixin
+ - brandText (string) i18n
+ - brandImage (weakreference, picker[type='image']) < 'jmix:image'
+
+[bootstrap4mix:siteBrand] > bootstrap4mix:brand mixin
+ extends = jnt:virtualsite
+ itemtype = content
+
+[bootstrap4mix:customButtonNavbar] > bootstrap4mix:brand mixin
  extends = bootstrap4nt:navbar
  itemtype = content
  - buttonClass (string) = 'navbar-toggler navbar-toggler-right' indexed=no
- - brandText (string) i18n
- - brandImage (weakreference, picker[type='image']) < 'jmix:image'
 
 [bootstrap4nt:navbar] > jnt:content, bootstrap4mix:component
  - root (string,choicelist[resourceBundle]) = 'homePage' autocreated indexed=no   < 'homePage', 'currentPage', 'parentPage'

@@ -2,21 +2,33 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="template" uri="http://www.jahia.org/tags/templateLib" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
 <%--@elvariable id="currentNode" type="org.jahia.services.content.JCRNodeWrapper"--%>
+<%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
+
 <template:addResources type="css" resources="bootstrap.min.css"/>
 <template:addResources type="javascript" resources="jquery.min.js"/>
 <template:addResources type="javascript" resources="popper.min.js"/>
 <template:addResources type="javascript" resources="bootstrap.min.js"/>
+
+<c:set var="siteNode" value="${renderContext.site}"/>
+<c:if test="${jcr:isNodeType(siteNode, 'bootstrap4mix:siteBrand')}">
+    <c:set var="brandImage" value="${siteNode.properties.brandImage.node}"/>
+    <c:set var="brandText" value="${siteNode.properties.brandText.string}"/>
+</c:if>
+
 <c:if test="${jcr:isNodeType(currentNode, 'bootstrap4mix:customButtonNavbar')}">
     <c:set var="buttonClass" value="${currentNode.properties.buttonClass.string}"/>
-    <c:set var="brandImage" value="${currentNode.properties.brandImage.node}"/>
-    <c:set var="brandText" value="${currentNode.properties.brandText.string}"/>
+    <c:if test="${empty brandImage}">
+        <c:set var="brandImage" value="${currentNode.properties.brandImage.node}"/>
+    </c:if>
+    <c:if test="${empty brandText}">
+        <c:set var="brandText" value="${currentNode.properties.brandText.string}"/>
+    </c:if>
 </c:if>
+
 <c:if test="${empty buttonClass}">
     <c:set var="buttonClass" value="navbar-toggler navbar-toggler-right"/>
 </c:if>
-
 
 <c:if test="${jcr:isNodeType(currentNode, 'bootstrap4mix:advancedNavbar')}">
     <c:set var="navClass" value="${currentNode.properties.navClass.string}"/>
@@ -58,7 +70,7 @@
     <a class="navbar-brand" href="${rootNodeUrl}">
         <c:if test="${! empty brandImage}">
             <c:url var="brandImageUrl" value="${brandImage.url}"/>
-            <img src="${brandImageUrl}" width="30" height="30" class="d-inline-block align-top" alt="">
+            <img src="${brandImageUrl}" class="d-inline-block align-top" alt="">
         </c:if>
         ${brandText}
     </a>
