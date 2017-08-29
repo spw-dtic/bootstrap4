@@ -229,3 +229,4 @@ extends = bootstrap4nt:button
  - fade (boolean) = 'true' autocreated indexed=no
  - align (string, choicelist[resourceBundle]) = 'justify-content-start' indexed=no < 'justify-content-start', 'justify-content-center', 'justify-content-end', 'nav-fill', 'nav-justified'
  + * (jnt:contentList) = jnt:contentList
+
