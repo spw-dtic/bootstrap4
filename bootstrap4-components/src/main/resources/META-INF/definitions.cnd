@@ -112,7 +112,7 @@
  itemtype = content
  - cssClass (string) = 'pull-left' indexed=no
 
-[bootstrap4nt:breadcrumb]> jnt:content, bootstrap4mix:component, jmix:studioOnly
+[bootstrap4nt:breadcrumb]> jnt:content, bootstrap4mix:component
 
 [bootstrap4nt:button]> jnt:content, bootstrap4mix:component, mix:title
  - buttonType (string, choicelist[buttonTypeInitializer,resourceBundle]) = 'internalLink' autocreated indexed=no < 'internalLink', 'externalLink', 'modal', 'collapse','popover'
