@@ -53,14 +53,14 @@
   </parent>
   <groupId>org.jahia.modules</groupId>
   <artifactId>bootstrap4-components</artifactId>
-  <version>0.8</version>
+  <version>0.9-SNAPSHOT</version>
   <packaging>bundle</packaging>
   <name>bootstrap4-components</name>
   <description>This is the custom module (bootstrap4-components) for running on a Digital Experience Manager server.</description>
   <scm>
     <connection>scm:dummy:uri</connection>
     <developerConnection>scm:dummy:uri</developerConnection>
-    <tag>bootstrap4-modules-0.8</tag>
+    <tag>HEAD</tag>
   </scm>
   <properties>
     <Jahia-Module-Priority>1</Jahia-Module-Priority>
