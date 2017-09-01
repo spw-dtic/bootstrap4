@@ -16,6 +16,15 @@
 <c:set var="title" value="${currentNode.properties['jcr:title'].string}"/>
 <c:set var="caption" value="${currentNode.properties['caption'].string}"/>
 <c:set var="imageNode" value="${currentNode.properties.image.node}"/>
+<c:if test="${jcr:isNodeType(currentNode, 'bootstrap4mix:advancedCarouselItem')}">
+    <c:set var="titleColor" value="text-${currentNode.properties['titleColor'].string}"/>
+    <c:set var="captionColor" value="text-${currentNode.properties['captionColor'].string}"/>
+    <c:set var="carouselItemClass" value=" ${currentNode.properties['carouselItemClass'].string}"/>
+    <c:set var="titleClass" value=" class='${titleColor}'"/>
+    <c:set var="captionClass" value=" class='${captionColor}'"/>
+</c:if>
+<c:set var="currentStatus" value="${currentResource.moduleParams.currentStatus}"/>
+
 <c:choose>
     <c:when test="${renderContext.editMode}">
         <div class="media">
@@ -28,30 +37,32 @@
             </a>
             <div class="media-body">
                 <c:if test="${not empty title}">
-                    <h4 class="media-heading">${title}</h4>
+                    <h4 class="media-heading${' '}${titleColor}">${title}</h4>
                 </c:if>
                 <c:if test="${not empty caption}">
-                    <p>${caption}</p>
+                    <p class="${captionColor}">${caption}</p>
                 </c:if>
             </div>
         </div>
     </c:when>
     <c:otherwise>
-        <c:if test="${! empty imageNode}">
-            <template:include view="image">
-                <template:param name="class" value="d-block w-100"/>
-            </template:include>
-        </c:if>
-        <c:if test="${! empty title || ! empty caption}">
-            <div class="carousel-caption d-none d-md-block">
-                <c:if test="${not empty title}">
-                    <h3>${title}</h3>
-                </c:if>
-                <c:if test="${not empty caption}">
-                    <p>${caption}</p>
-                </c:if>
-            </div>
-        </c:if>
+        <div class="carousel-item${currentStatus}${carouselItemClass}">
+            <c:if test="${! empty imageNode}">
+                <template:include view="image">
+                    <template:param name="class" value="d-block w-100"/>
+                </template:include>
+            </c:if>
+            <c:if test="${! empty title || ! empty caption}">
+                <div class="carousel-caption d-none d-md-block${carouselCaptionClass}">
+                    <c:if test="${not empty title}">
+                        <h3${titleClass}>${title}</h3>
+                    </c:if>
+                    <c:if test="${not empty caption}">
+                        <p${captionClass}>${caption}</p>
+                    </c:if>
+                </div>
+            </c:if>
+        </div>
     </c:otherwise>
 </c:choose>
 

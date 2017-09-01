@@ -26,6 +26,7 @@
     <c:set var="wrap" value="${currentNode.properties.wrap.boolean}"/>
     <c:set var="useIndicators" value="${currentNode.properties.useIndicators.boolean}"/>
     <c:set var="useLeftAndRightControls" value="${currentNode.properties.useLeftAndRightControls.boolean}"/>
+    <c:set var="carouselClass" value=" ${currentNode.properties.carouselClass.string}"/>
 </c:if>
 <c:if test="${empty useIndicators}">
     <c:set var="useIndicators" value="true"/>
@@ -41,6 +42,10 @@
 </c:if>
 <c:if test="${empty ride}">
     <c:set var="wrap" value="true"/>
+</c:if>
+<c:if test="${carouselClass eq ' '}">
+    <c:remove var="carouselClass"/>
+
 </c:if>
 <c:set var="options">
     <c:if test="${! empty interval && interval != 5000}">
@@ -60,7 +65,7 @@
     </c:if>
 </c:set>
 
-<div id="carousel_${currentNode.identifier}" class="carousel${renderContext.editMode?'edit':''} slide" ${options}>
+<div id="carousel_${currentNode.identifier}" class="carousel${renderContext.editMode?'edit':''} slide${carouselClass}" ${options} >
     <%-- Indicators --%>
     <c:if test="${useIndicators}">
         <ol class="carousel-indicators">
@@ -73,9 +78,11 @@
     <%-- Wrapper for slides --%>
     <div class="carousel-inner${renderContext.editMode?'edit':''}">
         <c:forEach items="${items}" var="item" varStatus="status">
-            <div class="carousel-item${renderContext.editMode?'edit':''}${status.first?' active':''}">
-                <template:module node="${item}" nodeTypes="bootstrap4nt:carouselItem"/>
-            </div>
+
+            <template:module node="${item}" nodeTypes="bootstrap4nt:carouselItem">
+                <template:param name="currentStatus" value="${status.first?' active':''}"/>
+            </template:module>
+
         </c:forEach>
     </div>
 
