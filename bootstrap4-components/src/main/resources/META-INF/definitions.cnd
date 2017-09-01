@@ -225,7 +225,7 @@ extends = bootstrap4nt:button
  - root (string,choicelist[resourceBundle]) = 'homePage' autocreated indexed=no   < 'homePage', 'currentPage', 'parentPage'
 
 [bootstrap4nt:tabs] > jnt:content, bootstrap4mix:component, jmix:manuallyOrderable, jmix:list, jmix:siteContent orderable
- - type (string, choicelist[resourceBundle,moduleImage='png']) = 'tab' autocreated indexed=no < 'tab', 'pill'
+ - type (string, choicelist[resourceBundle,moduleImage='png']) = 'tab' autocreated indexed=no < 'tab', 'pill','link'
  - fade (boolean) = 'true' autocreated indexed=no
  - align (string, choicelist[resourceBundle]) = 'justify-content-start' indexed=no < 'justify-content-start', 'justify-content-center', 'justify-content-end', 'nav-fill', 'nav-justified'
  + * (jnt:contentList) = jnt:contentList

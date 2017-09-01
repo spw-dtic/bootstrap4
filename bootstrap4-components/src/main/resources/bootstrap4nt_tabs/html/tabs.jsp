@@ -22,11 +22,11 @@
 <template:addResources type="javascript" resources="bootstrap.min.js"/>
 
 <c:set var="subLists" value="${jcr:getChildrenOfType(currentNode, 'jnt:contentList')}"/>
-<c:set var="type" value="${currentNode.properties.type.string}"/>
+<c:set var="type" value="nav-${currentNode.properties.type.string}s"/>
 <c:set var="align" value=" ${currentNode.properties.align.string}"/>
 <c:set var="fade" value="${currentNode.properties.fade.boolean}"/>
 
-<ul class="nav ${type eq 'pill' ? ' nav-pills': ' nav-tabs'} ${align ne ' justify-content-start' ? align : ''}" id="tabs-${currentNode.identifier}" role="tablist">
+<ul class="nav ${type} ${align ne ' justify-content-start' ? align : ''}" id="tabs-${currentNode.identifier}" role="tablist">
     <c:forEach items="${subLists}" var="droppableContent" varStatus="status">
         <li class="nav-item">
             <a class="nav-link ${status.first?' active':''}" data-toggle="tab" href="#tab-${droppableContent.identifier}" role="tab" aria-controls="tab-${droppableContent.identifier}">${droppableContent.displayableName}</a>
