@@ -1,22 +1,22 @@
 # Bootstrap 4 
-This is a Bootstrap 4 implementation of http://getbootstrap.com for Digital Experience Manager. This version is a draft based on the alpha beta of Bootstrap 4. This is a non supported version, also not compliant with the official bootstrap 3 version.
+This is a Bootstrap 4 implementation of http://getbootstrap.com for Digital Experience Manager. This version is a draft based on the beta of Bootstrap 4. This is an unsupported version, also not compliant with the official bootstrap 3 version.
 
-# Installation/dependances
-You first need to install this 2 dependance (extenal modules):
- * jQuery 3: avaliable in a non supported version at https://github.com/pvollenweider/jquery 
- * Popper.js: avaliable on the store https://store.jahia.com/contents/modules-repository/org/jahia/modules/popperjs.html
+# Installation/dependencies
+You first need to install this 2 dependencies (external modules):
+ * jQuery 3: available in an unsupported version at https://github.com/pvollenweider/jquery 
+ * Popper.js: available on the store https://store.jahia.com/contents/modules-repository/org/jahia/modules/popperjs.html
 
 Then you can deploy the bootstrap4-core module and the bootstrap4-components
 
 # List of components : 
-## Breadcrump
+## Breadcrumb
 Indicate the current page’s location within a navigational hierarchy
 
 ## Button
 Use Bootstrap’s custom button styles for actions in forms, dialogs, and more. Includes support for a handful of contextual variations, sizes, states, and more.
 ### Button action can be
  * An internal or an external link
- * A collapsable content 
+ * A collapsible content 
  * A modal (dialog prompts)
  * A popover
 
