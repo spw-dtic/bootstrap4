@@ -28,32 +28,42 @@
         </c:otherwise>
     </c:choose>
 </c:if>
-<c:if test="${fn:length(pageNodes) > 1}">
-    <c:if test="${jcr:isNodeType(currentNode,'bootstrap4mix:advancedBreadcrumb' )}">
-        <c:set var="cssClass" value=" ${currentNode.properties.cssClass.string}"/>
-    </c:if>
-    <ol class="breadcrumb ${cssClass}">
-        <c:forEach items="${functions:reverse(pageNodes)}" var="pageNode" varStatus="status">
-            <c:choose>
-                <c:when test="${jcr:findDisplayableNode(pageNode, renderContext) ne pageNode}">
-                    <li class="breadcrumb-item"><a href="#"><c:out value="${pageNode.displayableName}"/></a></li>
-                </c:when>
-                <c:when test="${renderContext.mainResource.node.path ne pageNode.path}">
-                    <li class="breadcrumb-item"><a href="<c:url value='${url.base}${pageNode.path}.html'/>"><c:out
-                            value="${pageNode.displayableName}"/></a></li>
-                </c:when>
-                <c:otherwise>
-                    <li class="breadcrumb-item active"><c:out value="${pageNode.displayableName}"/></li>
-                </c:otherwise>
-            </c:choose>
-        </c:forEach>
-        <c:if test="${not jcr:isNodeType(renderContext.mainResource.node, 'jnt:page')}">
-            <c:set var="pageNode" value="${renderContext.mainResource.node}"/>
-            <li class="breadcrumb-item">
-                <a href="<c:url value='${url.base}${pageNode.path}.html'/>">
-                    <c:out value="${functions:abbreviate(renderContext.mainResource.node.displayableName,15,30,'...')}"/>
-                </a>
-            </li>
-        </c:if>
-    </ol>
+
+<c:if test="${jcr:isNodeType(currentNode,'bootstrap4mix:advancedBreadcrumb' )}">
+    <c:set var="cssClass" value=" ${currentNode.properties.cssClass.string}"/>
 </c:if>
+<c:choose>
+    <c:when test="${fn:length(pageNodes) > 1}">
+        <ol class="breadcrumb ${cssClass}">
+            <c:forEach items="${functions:reverse(pageNodes)}" var="pageNode" varStatus="status">
+                <c:choose>
+                    <c:when test="${jcr:findDisplayableNode(pageNode, renderContext) ne pageNode}">
+                        <li class="breadcrumb-item"><a href="#"><c:out value="${pageNode.displayableName}"/></a></li>
+                    </c:when>
+                    <c:when test="${renderContext.mainResource.node.path ne pageNode.path}">
+                        <li class="breadcrumb-item"><a href="<c:url value='${url.base}${pageNode.path}.html'/>"><c:out
+                                value="${pageNode.displayableName}"/></a></li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="breadcrumb-item active"><c:out value="${pageNode.displayableName}"/></li>
+                    </c:otherwise>
+                </c:choose>
+            </c:forEach>
+            <c:if test="${not jcr:isNodeType(renderContext.mainResource.node, 'jnt:page')}">
+                <c:set var="pageNode" value="${renderContext.mainResource.node}"/>
+                <li class="breadcrumb-item">
+                    <a href="<c:url value='${url.base}${pageNode.path}.html'/>">
+                        <c:out value="${functions:abbreviate(renderContext.mainResource.node.displayableName,15,30,'...')}"/>
+                    </a>
+                </li>
+            </c:if>
+        </ol>
+    </c:when>
+    <c:otherwise>
+        <c:if test="${renderContext.editMode}">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Breadcrumb too small...</li>
+            </ol>
+        </c:if>
+    </c:otherwise>
+</c:choose>

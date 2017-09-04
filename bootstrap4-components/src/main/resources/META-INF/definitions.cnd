@@ -110,7 +110,7 @@
 [bootstrap4mix:advancedBreadcrumb] mixin
  extends = bootstrap4nt:breadcrumb
  itemtype = content
- - cssClass (string) = 'pull-left' indexed=no
+ - cssClass (string) = 'float-left' indexed=no
 
 [bootstrap4nt:breadcrumb]> jnt:content, bootstrap4mix:component
 
