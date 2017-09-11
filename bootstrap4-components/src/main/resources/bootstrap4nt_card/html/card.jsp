@@ -60,6 +60,6 @@
         </c:if>
     </div>
     <c:if test="${not empty footer}">
-        <div class="card-footer text-muted">${footer}</div>
+        <div class="card-footer ${textColor}">${footer}</div>
     </c:if>
 </div>

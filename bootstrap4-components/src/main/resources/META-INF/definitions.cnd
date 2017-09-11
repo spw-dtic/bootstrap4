@@ -156,7 +156,7 @@ extends = bootstrap4nt:button
  extends = bootstrap4nt:card
  itemtype = content
  - backgroundColor (string, choicelist[resourceBundle]) = 'default' autocreated indexed=no < 'default','primary','secondary','success','danger','warning','info','light','dark','white'
- - textColor (string, choicelist[resourceBundle]) = 'dark' autocreated indexed=no < 'primary','secondary','success','danger','warning','info','light','dark'
+ - textColor (string, choicelist[resourceBundle]) = 'dark' autocreated indexed=no < 'muted','primary','secondary','success','danger','warning','info','light','dark'
  - borderColor (string, choicelist[resourceBundle]) = 'default' autocreated indexed=no < 'default','primary','secondary','success','danger','warning','info','light','dark','white'
 
 [bootstrap4nt:card]> jnt:content, bootstrap4mix:component, mix:title, jmix:list, bootstrap4mix:image
