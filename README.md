@@ -1,9 +1,9 @@
 # Bootstrap 4 
-This is a Bootstrap 4 implementation of http://getbootstrap.com for Digital Experience Manager. This version is a draft based on the beta of Bootstrap 4. This is an unsupported version, also not compliant with the official bootstrap 3 version.
+This is a Bootstrap 4 implementation of http://getbootstrap.com for Digital Experience Manager. This version is a draft based on the beta 2 of Bootstrap 4. This is an unsupported version, also not compliant with the official bootstrap 3 version.
 
 # Installation/dependencies
 You first need to install this 2 dependencies (external modules):
- * jQuery 3: available in an unsupported version at https://github.com/pvollenweider/jquery 
+ * jQuery 3 (optional): available in an unsupported version at https://github.com/pvollenweider/jquery 
  * Popper.js: available on the store https://store.jahia.com/contents/modules-repository/org/jahia/modules/popperjs.html
 
 Then you can deploy the bootstrap4-core module and the bootstrap4-components
