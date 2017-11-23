@@ -28,48 +28,48 @@
 </c:if>
 <c:choose>
     <c:when test="${grid == '4_8'}">
-        <div class="col">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
-        <div class="col-8">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-4">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-8">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
     </c:when>
     <c:when test="${grid == '8_4'}">
-        <div class="col-8">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
-        <div class="col">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-8">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-4">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
     </c:when>
     <c:when test="${grid == '3_9'}">
-        <div class="col">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
-        <div class="col-9">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-3">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-9">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
     </c:when>
     <c:when test="${grid == '9_3'}">
-        <div class="col-9">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
-        <div class="col">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-9">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-3">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
     </c:when>
     <c:when test="${grid == '2_10'}">
-        <div class="col">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
-        <div class="col-10">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true"  moduleType="${moduleType}"  level="${level}"/></div>
+        <div class="col-md-2">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-10">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true"  moduleType="${moduleType}"  level="${level}"/></div>
     </c:when>
     <c:when test="${grid == '10_2'}">
-        <div class="col-10">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true"  moduleType="${moduleType}"  level="${level}"/></div>
-        <div class="col">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-19">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true"  moduleType="${moduleType}"  level="${level}"/></div>
+        <div class="col-md-2">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
     </c:when>
     <c:when test="${grid == '4_4_4'}">
-        <div class="col">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
-        <div class="col">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
-        <div class="col">${displayAbsoluteArea}<template:area path="${colName}-extra" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-4">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-4">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-4">${displayAbsoluteArea}<template:area path="${colName}-extra" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
     </c:when>
     <c:when test="${grid == '3_6_3'}">
-        <div class="col">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
-        <div class="col-6">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
-        <div class="col">${displayAbsoluteArea}<template:area path="${colName}-extra" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-3">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-6">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-3">${displayAbsoluteArea}<template:area path="${colName}-extra" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
     </c:when>
     <c:when test="${grid == '3_3_3_3'}">
-        <div class="col">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
-        <div class="col">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
-        <div class="col">${displayAbsoluteArea}<template:area path="${colName}-extra" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
-        <div class="col">${displayAbsoluteArea}<template:area path="${colName}-extra2" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-3">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-3">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-3">${displayAbsoluteArea}<template:area path="${colName}-extra" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-3">${displayAbsoluteArea}<template:area path="${colName}-extra2" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
     </c:when>
     <c:when test="${grid == '6_6'}">
-        <div class="col">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
-        <div class="col">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-6">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
+        <div class="col-md-6">${displayAbsoluteArea}<template:area path="${colName}-side" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/></div>
     </c:when>
     <c:when test="${grid == '12'}">
         <div class="col">${displayAbsoluteArea}<template:area path="${colName}-main" areaAsSubNode="true"  moduleType="${moduleType}"  level="${level}"/></div>
