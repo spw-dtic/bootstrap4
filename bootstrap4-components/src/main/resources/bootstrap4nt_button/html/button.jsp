@@ -122,7 +122,7 @@
                         </c:if>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-${state}" data-dismiss="modal">${closeText}</button>
+                        <button type="button" class="btn btn-${style}" data-dismiss="modal">${closeText}</button>
                     </div>
                 </div>
             </div>
