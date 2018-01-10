@@ -38,6 +38,7 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
   </scm>
   <properties>
     <jahia-depends>default,jquery,popperjs</jahia-depends>
+    <Jahia-Module-Priority>2</Jahia-Module-Priority>
   </properties>
   <repositories>
     <repository>
