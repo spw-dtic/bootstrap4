@@ -1,5 +1,5 @@
 # Bootstrap 4 
-This is a Bootstrap 4 implementation of http://getbootstrap.com for Digital Experience Manager. This version is a draft based on the beta 3 of Bootstrap 4. This is an unsupported version, also not compliant with the official bootstrap 3 version.
+This is a Bootstrap 4 implementation of http://getbootstrap.com for Digital Experience Manager. This non official version is not compliant with the official bootstrap 3.
 
 # Installation/dependencies
 You first need to install this 2 dependencies (external modules):
