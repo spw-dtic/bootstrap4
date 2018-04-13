@@ -24,6 +24,7 @@
     <c:set var="pause" value="${currentNode.properties.pause.boolean}"/>
     <c:set var="ride" value="${currentNode.properties.ride.boolean}"/>
     <c:set var="wrap" value="${currentNode.properties.wrap.boolean}"/>
+    <c:set var="fade" value="${currentNode.properties.fade.boolean}"/>
     <c:set var="useIndicators" value="${currentNode.properties.useIndicators.boolean}"/>
     <c:set var="useLeftAndRightControls" value="${currentNode.properties.useLeftAndRightControls.boolean}"/>
     <c:set var="carouselClass" value=" ${currentNode.properties.carouselClass.string}"/>
@@ -43,10 +44,16 @@
 <c:if test="${empty ride}">
     <c:set var="wrap" value="true"/>
 </c:if>
+<c:if test="${empty fade}">
+    <c:set var="fade" value="false"/>
+</c:if>
 <c:if test="${carouselClass eq ' '}">
     <c:remove var="carouselClass"/>
-
 </c:if>
+<c:if test="${fade}">
+    <c:set var="carouselClass" value="${carouselClass} carousel-fade"/>
+</c:if>
+
 <c:set var="options">
     <c:if test="${! empty interval && interval != 5000}">
         data-interval="${interval}"

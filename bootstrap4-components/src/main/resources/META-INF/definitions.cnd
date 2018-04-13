@@ -186,6 +186,7 @@ extends = bootstrap4nt:button
  - pause (boolean) = 'true' indexed=no
  - ride (boolean) = 'true' indexed=no
  - wrap (boolean) = 'true' indexed=no
+ - fade (boolean) = 'true' indexed=no
  - carouselClass (string) indexed=no
 
 [bootstrap4nt:carousel] > jnt:content, bootstrap4mix:component, jmix:list, jmix:siteContent orderable
