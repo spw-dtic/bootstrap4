@@ -7,10 +7,13 @@
 <%--@elvariable id="currentUser" type="org.jahia.services.usermanager.JahiaUser"--%>
 <%--@elvariable id="renderContext" type="org.jahia.services.render.RenderContext"--%>
 <%--@elvariable id="url" type="org.jahia.services.render.URLGenerator"--%>
-
+<c:set var="loginMenuULClass" value="${currentNode.properties.loginMenuULClass.string}"/>
+<c:if test="${empty loginMenuULClass}">
+    <c:set var="loginMenuULClass" value="navbar-nav flex-row ml-md-auto d-none d-md-flex"/>
+</c:if>
 <c:choose>
     <c:when test="${renderContext.loggedIn}">
-        <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+        <ul class="${loginMenuULClass}">
             <li class="nav-item dropdown">
                 <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="${currentNode.identifier}"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -46,7 +49,7 @@
         </ul>
     </c:when>
     <c:otherwise>
-        <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+        <ul class="${loginMenuULClass}">
             <li class="nav-item">
                 <a class="nav-link p-2 login" href="${url.login}" >
                     <fmt:message key="bootstrap4mix_customBaseNavbar.label.login"/>
