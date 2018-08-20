@@ -232,7 +232,7 @@ extends = bootstrap4nt:button
  itemtype = content
  - buttonClass (string) = 'navbar-toggler navbar-toggler-right' indexed=no
 
-[bootstrap4nt:navbar] > jnt:content, bootstrap4mix:component
+[bootstrap4nt:navbar] > jnt:content, bootstrap4mix:component, jmix:navMenuComponent
  - root (string,choicelist[resourceBundle]) = 'homePage' autocreated indexed=no   < 'homePage', 'currentPage', 'parentPage'
 
 [bootstrap4nt:tabs] > jnt:content, bootstrap4mix:component, jmix:manuallyOrderable, jmix:list, jmix:siteContent orderable
