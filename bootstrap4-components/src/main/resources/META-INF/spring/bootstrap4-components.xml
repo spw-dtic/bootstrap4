@@ -5,9 +5,6 @@
     <bean id="gridTypeInitializer" class="org.jahia.modules.bootstrap4.initializers.GridTypeInitializer">
         <property name="key" value="gridTypeInitializer" />
     </bean>
-    <bean id="linkTypeInitializer" class="org.jahia.modules.bootstrap4.initializers.LinkTypeInitializer">
-        <property name="key" value="linkTypeInitializer" />
-    </bean>
     <bean id="buttonTypeInitializer" class="org.jahia.modules.bootstrap4.initializers.ButtonTypeInitializer">
         <property name="key" value="buttonTypeInitializer" />
     </bean>
