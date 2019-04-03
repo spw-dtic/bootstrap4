@@ -11,19 +11,19 @@
 <template:addResources type="javascript" resources="bootstrap.min.js"/>
 
 <c:set var="siteNode" value="${renderContext.site}"/>
-<c:if test="${jcr:isNodeType(siteNode, 'bootstrap4mix:siteBrand')}">
-    <c:set var="brandImage" value="${siteNode.properties.brandImage.node}"/>
-    <c:set var="brandText" value="${siteNode.properties.brandText.string}"/>
-</c:if>
+<c:choose>
+    <c:when test="${jcr:isNodeType(siteNode, 'bootstrap4mix:siteBrand')}">
+        <c:set var="brandImage" value="${siteNode.properties.brandImage.node}"/>
+        <c:set var="brandText" value="${siteNode.properties.brandText.string}"/>
+    </c:when>
+    <c:when test="${jcr:isNodeType(currentNode, 'bootstrap4mix:brand')}">
+        <c:set var="brandImage" value="${currentNode.properties.brandImage.node}"/>
+        <c:set var="brandText" value="${currentNode.properties.brandText.string}"/>
+    </c:when>
+</c:choose>
 
 <c:if test="${jcr:isNodeType(currentNode, 'bootstrap4mix:customButtonNavbar')}">
     <c:set var="buttonClass" value="${currentNode.properties.buttonClass.string}"/>
-    <c:if test="${empty brandImage}">
-        <c:set var="brandImage" value="${currentNode.properties.brandImage.node}"/>
-    </c:if>
-    <c:if test="${empty brandText}">
-        <c:set var="brandText" value="${currentNode.properties.brandText.string}"/>
-    </c:if>
 </c:if>
 
 <c:if test="${empty buttonClass}">

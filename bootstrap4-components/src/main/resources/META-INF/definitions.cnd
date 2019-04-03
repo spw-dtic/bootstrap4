@@ -220,14 +220,17 @@ extends = bootstrap4nt:button
  - recursive (boolean) = 'true' autocreated indexed=no
 
 [bootstrap4mix:brand] mixin
+ extends = bootstrap4nt:navbar
  - brandText (string) i18n
  - brandImage (weakreference, picker[type='image']) < 'jmix:image'
 
-[bootstrap4mix:siteBrand] > bootstrap4mix:brand mixin
+[bootstrap4mix:siteBrand] mixin
  extends = jnt:virtualsite
  itemtype = content
+ - brandText (string) i18n
+ - brandImage (weakreference, picker[type='image']) < 'jmix:image'
 
-[bootstrap4mix:customButtonNavbar] > bootstrap4mix:brand mixin
+[bootstrap4mix:customButtonNavbar]  mixin
  extends = bootstrap4nt:navbar
  itemtype = content
  - buttonClass (string) = 'navbar-toggler navbar-toggler-right' indexed=no
