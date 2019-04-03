@@ -173,7 +173,8 @@ extends = bootstrap4nt:button
   - carouselItemClass (string) indexed=no
 
 
-[bootstrap4nt:carouselItem] > jnt:content, bootstrap4mix:image, mix:title
+[bootstrap4nt:carouselItem] > jnt:content, mix:title
+ - image (weakreference, picker[type='image']) mandatory < 'jmix:image'
  - caption (string,textarea) i18n
 
 [bootstrap4mix:carouselAdvancedSettings] mixin

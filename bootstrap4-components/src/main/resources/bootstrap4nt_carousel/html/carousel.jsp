@@ -72,9 +72,9 @@
     </c:if>
 </c:set>
 
-<div id="carousel_${currentNode.identifier}" class="carousel${renderContext.editMode?'edit':''} slide${carouselClass}" ${options} >
+<div id="carousel_${currentNode.identifier}" class="carousel${renderContext.editMode?'edit':' '} slide${carouselClass}" ${options} >
     <%-- Indicators --%>
-    <c:if test="${useIndicators}">
+    <c:if test="${useIndicators && ! renderContext.editMode}">
         <ol class="carousel-indicators">
             <c:forEach items="${items}" var="item" varStatus="status">
                 <li data-target="#carousel_${currentNode.identifier}" data-slide-to="${status.index}" <c:if test='${status.first}'>class="active"</c:if>></li>
@@ -94,7 +94,7 @@
     </div>
 
     <%-- Controls --%>
-    <c:if test="${useLeftAndRightControls}">
+    <c:if test="${useLeftAndRightControls && ! renderContext.editMode}">
         <a class="carousel-control-prev" href="#carousel_${currentNode.identifier}" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only"><fmt:message key="bootstrap4nt_carousel.previous"/></span>

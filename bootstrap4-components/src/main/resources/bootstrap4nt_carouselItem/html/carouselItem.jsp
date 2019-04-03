@@ -30,9 +30,8 @@
         <div class="media">
             <a class="media-left" href="#">
                 <c:if test="${! empty imageNode}">
-                    <template:include view="image">
-                        <template:param name="style" value="width: 64px"/>
-                    </template:include>
+                    <c:url var="imageUrl" value="${imageNode.url}" context="/"/>
+                    <img src="${imageUrl}" style="width: 64px"/>
                 </c:if>
             </a>
             <div class="media-body">
@@ -48,9 +47,8 @@
     <c:otherwise>
         <div class="carousel-item${currentStatus}${carouselItemClass}">
             <c:if test="${! empty imageNode}">
-                <template:include view="image">
-                    <template:param name="class" value="d-block w-100"/>
-                </template:include>
+                <c:url var="imageUrl" value="${imageNode.url}" context="/"/>
+                <img src="${imageUrl}" class="d-block w-100"/>
             </c:if>
             <c:if test="${! empty title || ! empty caption}">
                 <div class="carousel-caption d-none d-md-block${carouselCaptionClass}">
