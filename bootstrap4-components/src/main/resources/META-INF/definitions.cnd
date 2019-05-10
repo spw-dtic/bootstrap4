@@ -14,7 +14,7 @@
 [bootstrap4mix:createSection] mixin
  extends = bootstrap4nt:grid
  itemtype = content
- - sectionElement (string, choicelist[resourceBundle]) = 'div' autocreated indexed=no < 'section', 'article', 'header', 'footer', 'aside', 'nav', 'div'
+ - sectionElement (string, choicelist[resourceBundle]) = 'div' autocreated indexed=no < 'section', 'article', 'aside', 'hgroup', 'header', 'footer', 'aside', 'nav', 'div', 'figure', 'figcaption', 'main'
  - sectionId (string) indexed=no < '[a-zA-Z0-9-_]+'
  - sectionCssClass (string) indexed=no
  - sectionStyle (string) indexed=no
