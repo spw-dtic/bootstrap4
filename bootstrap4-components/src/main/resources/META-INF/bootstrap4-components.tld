@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+        version="2.0">
+
+    <description>Custom Bootstrap Functions</description>
+    <display-name>Custom Bootstrap Functions</display-name>
+    <tlib-version>1.0-SNAPSHOT</tlib-version>
+    <short-name>b4</short-name>
+    <uri>http://www.jahia.org/b4</uri>
+
+    <function>
+        <name>replaceAll</name>
+        <function-class>org.jahia.modules.bootstrap4.Functions</function-class>
+        <function-signature>java.lang.String replaceAll(java.lang.String, java.lang.String, java.lang.String)</function-signature>
+    </function>
+
+</taglib>

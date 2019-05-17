@@ -6,6 +6,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="uiComponents" uri="http://www.jahia.org/tags/uiComponentsLib" %>
 <%@ taglib prefix="search" uri="http://www.jahia.org/tags/search" %>
+<%@ taglib prefix="b4" uri="http://www.jahia.org/b4" %>
 <%--@elvariable id="currentNode" type="org.jahia.services.content.JCRNodeWrapper"--%>
 <%--@elvariable id="out" type="java.io.PrintWriter"--%>
 <%--@elvariable id="script" type="org.jahia.services.render.scripting.Script"--%>
@@ -25,20 +26,45 @@
 <c:set var="type" value="nav-${currentNode.properties.type.string}s"/>
 <c:set var="align" value=" ${currentNode.properties.align.string}"/>
 <c:set var="fade" value="${currentNode.properties.fade.boolean}"/>
-
-<ul class="nav ${type} ${align ne ' justify-content-start' ? align : ''}" id="tabs-${currentNode.identifier}" role="tablist">
-    <c:forEach items="${subLists}" var="droppableContent" varStatus="status">
+<c:set var="useListNameAsAnchor" value="${currentNode.properties.useListNameAsAnchor.boolean}"/>
+<c:set var="alphabet" value="abcdefghijklmnopqrstuvwxyz"/>
+<c:forEach items="${subLists}" var="droppableContent" varStatus="status">
+    <c:choose>
+        <c:when test="${useListNameAsAnchor}">
+            <c:set var="anchorName" value="${fn:trim(droppableContent.name)}"/>
+            <%-- check if anchor start using a char, else prefix with tab --%>
+            <c:set var="firstChar" value = "${fn:substring(fn:toLowerCase(anchorName), 0, 1)}" />
+            <c:if test="${! fn:contains(alphabet, firstChar)}">
+                <c:set var="anchorName" value="tab-${anchorName}"/>
+            </c:if>
+            <%-- cleanup --%>
+            <c:set var="anchorName" value="${b4:replaceAll(anchorName, '[^A-Za-z0-9_]', '-')}"/>
+        </c:when>
+        <c:otherwise>
+            <c:set var="anchorName" value="tab-${droppableContent.identifier}"/>
+        </c:otherwise>
+    </c:choose>
+    <c:set var="navItems">
+        ${navItems}
         <li class="nav-item">
-            <a class="nav-link ${status.first?' active':''}" data-toggle="tab" href="#tab-${droppableContent.identifier}" role="tab" aria-controls="tab-${droppableContent.identifier}">${droppableContent.displayableName}</a>
+            <a class="nav-link ${status.first?' active':''}" data-toggle="tab" href="#${anchorName}" role="tab" aria-controls="${anchorName}">${droppableContent.displayableName}</a>
         </li>
-    </c:forEach>
-</ul>
-<div class="tab-content">
-    <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jmix:droppableContent')}" var="droppableContent" varStatus="status">
-        <div class="tab-pane  ${status.first?' active':''} ${fade ? ' fade' : ''} ${fade && status.first ? ' show' : ''}" id="tab-${droppableContent.identifier}" role="tabpanel">
+    </c:set>
+    <c:set var="tabPanes">
+        ${tabPanes}
+        <div class="tab-pane  ${status.first?' active':''} ${fade ? ' fade' : ''} ${fade && status.first ? ' show' : ''}" id="${anchorName}" role="tabpanel">
             <template:module node="${droppableContent}" editable="true"/>
         </div>
-    </c:forEach>
+    </c:set>
+</c:forEach>
+
+
+
+<ul class="nav ${type} ${align ne ' justify-content-start' ? align : ''}" id="tabs-${currentNode.identifier}" role="tablist">
+    ${navItems}
+</ul>
+<div class="tab-content">
+    ${tabPanes}
 </div>
 <c:if test="${renderContext.editMode}">
     <template:module path="*" nodeTypes="jnt:contentList"/>

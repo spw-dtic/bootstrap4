@@ -243,5 +243,6 @@ extends = bootstrap4nt:button
  - type (string, choicelist[resourceBundle,moduleImage='png']) = 'tab' autocreated indexed=no < 'tab', 'pill','link'
  - fade (boolean) = 'true' autocreated indexed=no
  - align (string, choicelist[resourceBundle]) = 'justify-content-start' indexed=no < 'justify-content-start', 'justify-content-center', 'justify-content-end', 'nav-fill', 'nav-justified'
+ - useListNameAsAnchor (boolean) = 'true' autocreated indexed=no
  + * (jnt:contentList) = jnt:contentList
 
