@@ -69,3 +69,12 @@
 <c:if test="${renderContext.editMode}">
     <template:module path="*" nodeTypes="jnt:contentList"/>
 </c:if>
+<template:addResources targetTag="body" type="inline">
+    <script>
+        var url = window.location.href;
+        if (url.indexOf("#") > 0){
+            var activeTab = url.substring(url.indexOf("#") + 1);
+            $('.nav[role="tablist"] a[href="#'+activeTab+'"]').tab('show');
+        }
+    </script>
+</template:addResources>
