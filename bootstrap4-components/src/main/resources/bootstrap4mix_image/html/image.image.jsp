@@ -47,11 +47,9 @@
         <c:if test="${thumbnails}">
             <c:set var="class">${class}${' img-thumbnail'}</c:set>
         </c:if>
-        <c:if test="${jcr:isNodeType(currentNode, 'bootstrap4mix:borderRadius')}">
-            <c:set var="borderRadius" value="${currentNode.properties.borderRadius.string}"/>
-            <c:if test="${borderRadius != 'rounded-0'}">
-                <c:set var="class">${class}${' '}${borderRadius }</c:set>
-            </c:if>
+        <c:set var="borderRadius" value="${currentNode.properties.borderRadius.string}"/>
+        <c:if test="${borderRadius != 'rounded-0'}">
+            <c:set var="class">${class}${' '}${borderRadius }</c:set>
         </c:if>
         <c:set var="align" value="${currentNode.properties.align.string}"/>
         <c:choose>

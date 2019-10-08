@@ -2,6 +2,7 @@
 <bootstrap4nt = 'http://www.jahia.org/bootstrap4/nt/1.0'>
 <jnt = 'http://www.jahia.org/jahia/nt/1.0'>
 <jmix = 'http://www.jahia.org/jahia/mix/1.0'>
+<mix = 'http://www.jcp.org/jcr/mix/1.0'>
 
 [bootstrap4mix:predefinedGrid] > jmix:templateMixin mixin
  extends = bootstrap4nt:grid
@@ -59,11 +60,7 @@
  - marginWhere  (string, choicelist[resourceBundle]) = 'all' autocreated indexed=no < 'all', 't', 'b', 'l', 'r', 'x', 'y'
  - marginSize (string, choicelist[resourceBundle]) = '3' autocreated indexed=no < '0', '1', '2', '3', '4', '5'
 
-[bootstrap4mix:borderRadius] mixin
- - borderRadius (string, choicelist[resourceBundle]) = 'default' autocreated indexed=no < 'default','rounded','rounded-top', 'rounded-right', 'rounded-bottom','rounded-left','rounded-circle','rounded-0'
-
-
-[bootstrap4mix:imageAdvancedSettings] > bootstrap4mix:borderRadius mixin
+[bootstrap4mix:imageAdvancedSettings]  mixin
  extends = bootstrap4mix:imageAdvanced
  itemtype = content
  - imageClass (string) indexed=no
@@ -73,6 +70,7 @@
  - thumbnails (boolean) = 'false' indexed=no
  - align (string, choicelist[resourceBundle]) = 'default' autocreated indexed=no < 'default', 'left', 'right', 'center'
  - alt (string) i18n
+ - borderRadius (string, choicelist[resourceBundle]) = 'rounded-0' autocreated indexed=no < 'rounded','rounded-top', 'rounded-right', 'rounded-bottom','rounded-left','rounded-circle','rounded-0'
 
 [bootstrap4mix:imageAdvanced] > bootstrap4mix:image mixin
 

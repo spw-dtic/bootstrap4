@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.jahia.modules</groupId>
+        <artifactId>bootstrap4-modules</artifactId>
+        <version>1.16-SNAPSHOT</version>
+    </parent>
+    <artifactId>bootstrap4-package</artifactId>
+    <name>Bootstrap 4 Package</name>
+    <packaging>pom</packaging>
+    <description>Parent project to package all Bootstrap 4 related components.</description>
+    <properties>
+        <jahia.package.assembly.file>src/main/assembly/bootstrap4.xml</jahia.package.assembly.file>
+        <jahia.package.sources.assembly.file>src/main/assembly/bootstrap4-sources.xml</jahia.package.sources.assembly.file>
+        <jahia.final.package.name>bootstrap4-package</jahia.final.package.name>
+        <jahia.manifest.package.id>Bootstrap4</jahia.manifest.package.id>
+        <jahia.manifest.description>popperjs, bootstrap4-core, bootstrap4-components</jahia.manifest.description>
+    </properties>
+    <repositories>
+        <repository>
+            <id>jahia-public</id>
+            <name>Jahia Public Repository</name>
+            <url>https://devtools.jahia.com/nexus/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>org.jahia.modules</groupId>
+            <artifactId>popperjs</artifactId>
+            <version>1.14.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jahia.modules</groupId>
+            <artifactId>bootstrap4-core</artifactId>
+            <version>1.16-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jahia.modules</groupId>
+            <artifactId>bootstrap4-components</artifactId>
+            <version>1.16-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>packaging-dependencies</id>
+                        <configuration>
+                            <attach>true</attach>
+                            <archive>
+                                <manifestEntries>
+                                    <Jahia-Required-Version>7.3.0.0</Jahia-Required-Version>
+                                </manifestEntries>
+                            </archive>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>packaging-dependencies-sources</id>
+                        <configuration>
+                            <archive>
+                                <manifestEntries>
+                                    <Jahia-Required-Version>7.3.0.0</Jahia-Required-Version>
+                                </manifestEntries>
+                            </archive>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
