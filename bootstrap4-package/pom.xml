@@ -17,6 +17,7 @@
         <jahia.final.package.name>bootstrap4-package</jahia.final.package.name>
         <jahia.manifest.package.id>Bootstrap4</jahia.manifest.package.id>
         <jahia.manifest.description>popperjs, bootstrap4-core, bootstrap4-components</jahia.manifest.description>
+        <jahia.manifest.license>org.jahia.core</jahia.manifest.license>
     </properties>
     <repositories>
         <repository>
