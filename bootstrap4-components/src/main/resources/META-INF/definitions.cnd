@@ -244,3 +244,5 @@ extends = bootstrap4nt:button
  - useListNameAsAnchor (boolean) = 'true' autocreated indexed=no
  + * (jnt:contentList) = jnt:contentList
 
+// need to keep this mixin for compatibility issue...
+[bootstrap4mix:borderRadius] mixin
