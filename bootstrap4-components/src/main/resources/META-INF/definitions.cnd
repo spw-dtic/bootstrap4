@@ -163,6 +163,12 @@ extends = bootstrap4nt:button
  - footer (string) i18n
  + * (jmix:droppableContent) = jmix:droppableContent
 
+[bootstrap4mix:cardAdvancedSettings] mixin
+ extends = bootstrap4nt:card
+ itemtype = content
+ - cssClass (string) = 'card' indexed=no
+ - freeFooter (boolean) = 'false' indexed=no
+
  [bootstrap4mix:advancedCarouselItem] mixin
   extends = bootstrap4nt:carouselItem
   itemtype = content

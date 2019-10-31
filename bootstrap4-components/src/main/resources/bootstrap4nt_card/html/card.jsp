@@ -41,8 +41,16 @@
     </c:if>
 </c:if>
 
+<c:if test="${jcr:isNodeType(currentNode, 'bootstrap4mix:cardAdvancedSettings')}">
+    <c:set var="cssClass" value="${currentNode.properties.cssClass.string}"/>
+    <c:set var="freeFooter" value="${currentNode.properties.freeFooter.boolean}"/>
+</c:if>
+<c:if test="${empty cssClass}">
+    <c:set var="cssClass" value="card"/>
+</c:if>
 
-<div class="card${textAlign}${backgroundColor}${textColor}${borderColor}">
+
+<div class="${cssClass}${textAlign}${backgroundColor}${textColor}${borderColor}">
     <c:if test="${! empty imageNode}">
         <template:include view="image">
             <template:param name="class" value="card-img-top"/>
@@ -53,13 +61,20 @@
     </c:if>
     <div class="card-body">
         <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jmix:droppableContent')}" var="droppableContent">
-            <template:module node="${droppableContent}" editable="true"/>
+            <c:if test="${droppableContent.name ne 'freeFooter'}">
+                <template:module node="${droppableContent}" editable="true"/>
+            </c:if>
         </c:forEach>
         <c:if test="${renderContext.editMode}">
             <template:module path="*" nodeTypes="jmix:droppableContent"/>
         </c:if>
     </div>
-    <c:if test="${not empty footer}">
-        <div class="card-footer ${textColor}">${footer}</div>
+    <c:if test="${not empty footer || freeFooter}">
+        <div class="card-footer ${textColor}">
+                ${footer}
+            <c:if test="${freeFooter}">
+                <template:area path="freeFooter" areaAsSubNode="true"/>
+            </c:if>
+        </div>
     </c:if>
 </div>
