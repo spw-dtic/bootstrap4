@@ -43,10 +43,14 @@
 
 <c:if test="${jcr:isNodeType(currentNode, 'bootstrap4mix:cardAdvancedSettings')}">
     <c:set var="cssClass" value="${currentNode.properties.cssClass.string}"/>
+    <c:set var="cardBodyCssClass" value="${currentNode.properties.cardBodyCssClass.string}"/>
     <c:set var="freeFooter" value="${currentNode.properties.freeFooter.boolean}"/>
 </c:if>
 <c:if test="${empty cssClass}">
     <c:set var="cssClass" value="card"/>
+</c:if>
+<c:if test="${empty cardBodyCssClass}">
+    <c:set var="cardBodyCssClass" value="card-body"/>
 </c:if>
 
 
@@ -59,7 +63,7 @@
     <c:if test="${! empty title}">
         <${headerSize} class="card-header">${title}</${headerSize}>
     </c:if>
-    <div class="card-body">
+    <div class="${cardBodyCssClass}">
         <c:forEach items="${jcr:getChildrenOfType(currentNode, 'jmix:droppableContent')}" var="droppableContent">
             <c:if test="${droppableContent.name ne 'freeFooter'}">
                 <template:module node="${droppableContent}" editable="true"/>
