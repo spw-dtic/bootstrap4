@@ -1,5 +1,5 @@
 
-# Bootstrap 4 This is a Bootstrap 4 implementation of http://getbootstrap.com for Digital Experience Manager. This unofficial version is not compliant with the official bootstrap 3.  
+Bootstrap 4 This is a Bootstrap 4 implementation of http://getbootstrap.com for Digital Experience Manager. This unofficial version is not compliant with the official bootstrap 3.  
   
 ## Migration from a Bootstrap 4 components v1  
 If you update an existing Jahia from Bootstrap 4 components v1 to the v2, please read the dedicated part bellow  
@@ -51,7 +51,7 @@ Adds a div describing the bootstrap version used
   
 # Migration from a Bootstrap 4 components v1  
   
-**Please read this file if you update Bootstrap 4 components from v1.x to v2.x**  
+**Please read this file if you update Bootstrap 4 from v1.x to v2.x**  
 We did refactor the *Layout / Grid* component by moving the *Grid* part to the *Create Row*.  
   
 As a result, when you want to create some columns, you will need to check the *Create Row / Columns* checkbox and then select the type of grid that you want to use (*Predefined* or *Custom*).  
