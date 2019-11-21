@@ -1,7 +1,7 @@
 
 Bootstrap 4 This is a Bootstrap 4 implementation of http://getbootstrap.com for Digital Experience Manager. This unofficial version is not compliant with the official bootstrap 3.  
   
-## Migration from a Bootstrap 4 components v1  
+## Migration from Bootstrap 4 v1.x
 If you update an existing Jahia from Bootstrap 4 components v1 to the v2, please read the dedicated part bellow  
   
 ## Installation/dependencies  
@@ -49,7 +49,7 @@ This component provides bootstrap 4 styles and CK templates
 ### Version  
 Adds a div describing the bootstrap version used  
   
-# Migration from a Bootstrap 4 components v1  
+# Migration from Bootstrap 4 v1.x
   
 **Please read this file if you update Bootstrap 4 from v1.x to v2.x**  
 We did refactor the *Layout / Grid* component by moving the *Grid* part to the *Create Row*.  
