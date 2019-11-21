@@ -9,8 +9,17 @@
 <c:set var="createSection" value="${jcr:isNodeType(currentNode,'bootstrap4mix:createSection')}"/>
 <c:set var="createContainer" value="${jcr:isNodeType(currentNode,'bootstrap4mix:createContainer')}"/>
 <c:set var="createRow" value="${jcr:isNodeType(currentNode,'bootstrap4mix:createRow')}"/>
-
-<c:set var="gridType" value="${currentNode.properties.gridType.string}"/>
+<c:choose>
+    <c:when test="${jcr:isNodeType(currentNode, 'bootstrap4mix:predefinedGrid')}">
+        <c:set var="gridType" value="predefinedGrid"/>
+    </c:when>
+    <c:when test="${jcr:isNodeType(currentNode, 'bootstrap4mix:customGrid')}">
+        <c:set var="gridType" value="customGrid"/>
+    </c:when>
+    <c:otherwise>
+        <c:set var="gridType" value="nogrid"/>
+    </c:otherwise>
+</c:choose>
 
 <c:if test="${createSection}">
     <c:set var="sectionType" value="${currentNode.properties['sectionElement'].string}"/>

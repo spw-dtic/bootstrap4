@@ -25,6 +25,7 @@
 [bootstrap4mix:createRow] mixin
  extends = bootstrap4nt:grid
  itemtype = content
+ - typeOfGrid (string, choicelist[gridTypeInitializer, resourceBundle])  = 'nogrid' autocreated indexed=no < 'nogrid', 'predefinedGrid', 'customGrid'
  - rowId (string) < '[a-zA-Z0-9-_]+'
  - rowCssClass (string) indexed=no
  - rowVerticalAlignment (string, choicelist[resourceBundle])  = 'default' autocreated indexed=no < 'default', 'align-items-start', 'align-items-center', 'align-items-end'
@@ -42,9 +43,8 @@
  itemtype = content
  - level (string, choicelist[resourceBundle])  = '0' autocreated indexed=no < '0', '1', '2', '3', '4', '5'
 
-
 [bootstrap4nt:grid] > jnt:content, bootstrap4mix:component, jmix:list
- - gridType (string, choicelist[gridTypeInitializer, resourceBundle])  = 'predefinedGrid' autocreated indexed=no < 'nogrid', 'predefinedGrid', 'customGrid'
+ - gridType (string) hidden
  + * (jmix:droppableContent)  = jmix:droppableContent
 
 [bootstrap4mix:hasPadding] mixin
@@ -74,6 +74,8 @@
  - align (string, choicelist[resourceBundle])  = 'default' autocreated indexed=no < 'default', 'left', 'right', 'center'
  - alt (string) i18n
  - borderRadius (string, choicelist[resourceBundle])  = 'rounded-0' autocreated indexed=no < 'rounded','rounded-top', 'rounded-right', 'rounded-bottom','rounded-left','rounded-circle','rounded-0'
+ - borderRadiusSize (string, choicelist[resourceBundle]) = 'default' < 'default','rounded-lg','rounded-sm'
+
 
 [bootstrap4mix:imageAdvanced] > bootstrap4mix:image mixin
 
