@@ -64,6 +64,6 @@ This script executes a query on your default repository and check on all *Layout
   
 ## What is not done with this script?  
 ### Publication  
-This script only updates the default workspace; you will need to publish the content on live. Note that the publication is not mandatory; the output should be correct on Live even if you don't execute the groovy script.  
+This script updates the default workspace and publish nodes without pending modifications; you will need to publish some nodes manually. Note that the publication is not mandatory; the output should be correct on Live even if you don't execute the groovy script.  
 ### Templates and other modules  
 You will also need to update all your modules or templates set that use the *Layout / Grid* module, and if you were using the legacy grid, you will need to check the *Create Row / Column* checkbox and select the right grid type.
