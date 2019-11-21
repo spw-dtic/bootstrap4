@@ -22,11 +22,17 @@ JCRTemplate.getInstance().doExecuteWithSystemSession(null, Constants.EDIT_WORKSP
                 node.addMixin('bootstrap4mix:createRow');
                 logger.info("Add mixin bootstrap4mix:createRow on " + node.getPath());
             }
-            node.setProperty("typeOfGrid", "predefinedGrid");
-            if (hasPendingModification(node)) {
-                nodesToManuelPublish.add(node.getIdentifier());
-            } else {
-                nodesToAutoPublish.add(node.getIdentifier())
+            String typeOfGrid = "";
+            if (node.hasProperty("typeOfGrid")) {
+                typeOfGrid = node.getProperty('typeOfGrid').getString();
+            }
+            if (! "predefinedGrid".equals(typeOfGrid)) {
+                node.setProperty("typeOfGrid", "predefinedGrid");
+                if (hasPendingModification(node)) {
+                    nodesToManuelPublish.add(node.getIdentifier());
+                } else {
+                    nodesToAutoPublish.add(node.getIdentifier())
+                }
             }
         }
         q = "SELECT * FROM [bootstrap4mix:customGrid]";
@@ -37,11 +43,17 @@ JCRTemplate.getInstance().doExecuteWithSystemSession(null, Constants.EDIT_WORKSP
                 node.addMixin('bootstrap4mix:createRow');
                 logger.info("Add mixin bootstrap4mix:createRow on " + node.getPath());
             }
-            node.setProperty("typeOfGrid", "customGrid");
-            if (hasPendingModification(node)) {
-                nodesToManuelPublish.add(node.getIdentifier());
-            } else {
-                nodesToAutoPublish.add(node.getIdentifier())
+            String typeOfGrid = "";
+            if (node.hasProperty("typeOfGrid")) {
+                typeOfGrid = node.getProperty('typeOfGrid').getString();
+            }
+            if (! "customGrid".equals(typeOfGrid)) {
+                node.setProperty("typeOfGrid", "customGrid");
+                if (hasPendingModification(node)) {
+                    nodesToManuelPublish.add(node.getIdentifier());
+                } else {
+                    nodesToAutoPublish.add(node.getIdentifier())
+                }
             }
         }
         q = "SELECT * FROM [bootstrap4mix:createRow]";
