@@ -27,4 +27,11 @@
         </div>
     </c:set>
 </c:if>
+<c:if test="${renderContext.editMode}">
+    <c:set var="createContainer" value="${jcr:isNodeType(currentNode,'bootstrap4mix:createContainer')}"/>
+    <c:set var="createRow" value="${jcr:isNodeType(currentNode,'bootstrap4mix:createRow')}"/>
+    <c:if test="${! createContainer && ! createRow}">
+        <span class="text-muted">#${currentNode.name}</span>
+    </c:if>
+</c:if>
 ${displayAbsoluteArea}<template:area path="${colName}" areaAsSubNode="true" moduleType="${moduleType}" level="${level}"/>
