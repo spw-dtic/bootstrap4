@@ -4,6 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="jcr" uri="http://www.jahia.org/tags/jcr" %>
 <%--@elvariable id="currentNode" type="org.jahia.services.content.JCRNodeWrapper"--%>
+<template:addResources type="css" resources="bootstrap.min.css"/>
 <c:set var="imageNode" value="${currentNode.properties.image.node}"/>
 <c:if test="${! empty imageNode}">
     <%--

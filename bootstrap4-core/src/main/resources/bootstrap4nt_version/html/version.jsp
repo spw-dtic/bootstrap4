@@ -20,13 +20,6 @@
 <%-- Bootstrap CSS --%>
 <template:addResources type="css" resources="bootstrap.min.css"/>
 
-<%-- jQuery first, then Popper.js, then Bootstrap JS. --%>
-<template:addResources type="javascript" resources="jquery.min.js"/>
-<template:addResources type="javascript" resources="popper.min.js"/>
-<template:addResources type="javascript" resources="bootstrap.min.js"/>
-
-
-
 <c:if test="${renderContext.editMode}">
     <div class="alert alert-info">
         This page is running <a href="http://getbootstrap.com/" class="alert-link">Bootstrap v4.3.1</a>
