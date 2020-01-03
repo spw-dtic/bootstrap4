@@ -51,6 +51,7 @@
 
 <c:set var="root" value="${currentNode.properties.root.string}"/>
 <c:set var="curentPageNode" value="${jcr:getMeAndParentsOfType(renderContext.mainResource.node,'jnt:page')}"/>
+<%-- FIXME this rerutn a list instead of a node --> currentPage and parentPage won't work --%>
 <c:choose>
     <c:when test="${root eq 'currentPage'}">
         <c:set var="rootNode" value="${curentPageNode}"/>
