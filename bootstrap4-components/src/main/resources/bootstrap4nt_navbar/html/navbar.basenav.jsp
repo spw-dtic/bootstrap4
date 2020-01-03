@@ -21,8 +21,8 @@
 </c:if>
 <c:set var="root" value="${currentNode.properties.root.string}"/>
 <c:set var="curentPageNode" value="${renderContext.mainResource.node}"/>
-<c:if test="${! jcr:isNodeType(curentPageNode,'jnt:page')}">
-    <c:set var="curentPageNode" value="${jcr:getParentOfType(curentPageNode, 'jnt:page')}"/>
+<c:if test="${! jcr:isNodeType(curentPageNode,'jmix:navMenuItem')}">
+    <c:set var="curentPageNode" value="${jcr:getParentOfType(curentPageNode, 'jmix:navMenuItem')}"/>
 </c:if>
 <c:choose>
     <c:when test="${root eq 'currentPage'}">
