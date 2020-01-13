@@ -50,8 +50,12 @@
 </c:if>
 
 <c:set var="root" value="${currentNode.properties.root.string}"/>
-<c:set var="curentPageNode" value="${jcr:getMeAndParentsOfType(renderContext.mainResource.node,'jnt:page')}"/>
-<%-- FIXME this rerutn a list instead of a node --> currentPage and parentPage won't work --%>
+
+<c:set var="curentPageNode" value="${renderContext.mainResource.node}"/>
+<c:if test="${! jcr:isNodeType(curentPageNode,'jmix:navMenuItem')}">
+    <c:set var="curentPageNode" value="${jcr:getParentOfType(curentPageNode, 'jmix:navMenuItem')}"/>
+</c:if>
+
 <c:choose>
     <c:when test="${root eq 'currentPage'}">
         <c:set var="rootNode" value="${curentPageNode}"/>
@@ -67,7 +71,15 @@
     <c:if test="${addContainerWithinTheNavbar}">
         <div class="container">
     </c:if>
-    <c:url var="rootNodeUrl" value="${rootNode.url}"/>
+    <c:choose>
+        <c:when test="${jcr:isNodeType(rootNode, 'jnt:virtualsite')}">
+            <c:url var="rootNodeUrl" value="${renderContext.site.home.url}"/>
+        </c:when>
+        <c:otherwise>
+            <c:url var="rootNodeUrl" value="${rootNode.url}"/>
+        </c:otherwise>
+    </c:choose>
+
     <a class="navbar-brand" href="${rootNodeUrl}">
         <c:if test="${! empty brandImage}">
             <c:url var="brandImageUrl" value="${brandImage.url}"/>
