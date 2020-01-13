@@ -65,7 +65,7 @@
         value=' '/>${rowHorizontalAlignment}</c:if>">
 </c:if>
 
-<template:module node="${currentNode}" view="hidden.${gridType}" editable="false"/>
+<template:include view="hidden.${gridType}"/>
 
 <c:if test="${createRow}">
     </div>
