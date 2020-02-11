@@ -256,3 +256,6 @@
 
 // need to keep this mixin for compatibility issue...
 [bootstrap4mix:borderRadius] mixin
+
+[bootstrap4nt:navBarItemLanguageSwitcher] > jnt:content, bootstrap4mix:component, jmix:studioOnly
+- typeOfDisplay (string, choicelist[resourceBundle]) = 'isoLocaleCountryCode' mandatory indexed=no < 'isoLocaleCountryCode', 'languageCode', 'doubleLetter', 'letter', 'nameInLocale', 'nameCurrentLocale', 'flag'
